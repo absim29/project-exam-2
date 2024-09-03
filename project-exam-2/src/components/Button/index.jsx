@@ -1,13 +1,14 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
-function MyButton() {
+function MyButton({ to, label }) {
   return (
-    <>
+    <Link to={to}>
       <Button variant="outline-dark" size="lg" className="px-5">
-        Login
+        {label}
       </Button>
-    </>
+    </Link>
   );
 }
 
