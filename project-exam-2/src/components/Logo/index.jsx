@@ -8,7 +8,7 @@ function Logo() {
     objectFit: "cover",
   };
   return (
-    <div className="position-fixed top-0 start-0">
+    <div className="position-absolute top-0 start-0">
       <img src={logo} alt="Holidaze Logo" style={logoStyle} />
     </div>
   );
