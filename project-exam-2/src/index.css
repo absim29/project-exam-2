@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Calistoga&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Calistoga&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 * {
   margin: 0;
@@ -8,10 +9,14 @@
   font-style: normal;
 }
 
-h1 {
+.first-font {
   font-family: "Calistoga", serif;
 }
 
-h2 {
+.second-font {
   font-family: "Great Vibes", cursive;
+}
+
+.third-font {
+  font-family: "Caladea", serif;
 }
