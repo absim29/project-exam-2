@@ -4,7 +4,9 @@ import Button from "react-bootstrap/Button";
 function MyButton() {
   return (
     <>
-      <Button variant="outline-light">Log in</Button>
+      <Button variant="outline-dark" size="lg" className="px-5">
+        Login
+      </Button>
     </>
   );
 }
