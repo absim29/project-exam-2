@@ -12,7 +12,7 @@ function LandingPage() {
         <h1 className="text-uppercase first-font">Escape the ordinary</h1>
         <h2 className="second-font">Your Next Adventure Starts Here</h2>
         <MyButton to="/venues" label="Explore" />
-        <h3 className="first-font fs-5 mt-3">Need an account? SIGN UP</h3>
+        <h3 className="first-font fs-5 mt-3">Already a user? LOGIN</h3>
         <div className="third-font d-flex flex-column justify-content-center align-items-center mx-5 px-5">
           <p>
             By signing in or creating an account, you agree with our{" "}
