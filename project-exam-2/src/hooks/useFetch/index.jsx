@@ -4,9 +4,10 @@ function useFetch(apiUrl) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [hasMoreData, setHasMoreData] = useState(true);
 
   const [page, setPage] = useState(1); // Start with page 1
-  const pageSize = 5; // Number of results per page
+  const pageSize = 6; // Number of results per page
 
   useEffect(() => {
     async function fetchData() {
@@ -22,6 +23,7 @@ function useFetch(apiUrl) {
         }
         const result = await response.json();
         setData(result.data);
+        setHasMoreData(result.data.length === pageSize);
       } catch (error) {
         setIsError(true);
       }
@@ -32,7 +34,11 @@ function useFetch(apiUrl) {
     fetchData(apiUrl);
   }, [apiUrl, page, pageSize]);
 
-  const nextPage = () => setPage(page + 1);
+  const nextPage = () => {
+    if (hasMoreData) {
+      setPage(page + 1);
+    }
+  };
   const prevPage = () => setPage(Math.max(0, page - 1));
 
   return {
@@ -43,6 +49,7 @@ function useFetch(apiUrl) {
     setPage,
     nextPage,
     prevPage,
+    hasMoreData,
   };
 }
 

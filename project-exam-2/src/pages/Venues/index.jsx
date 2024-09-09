@@ -8,7 +8,8 @@ const url = (page, pageSize) =>
   `https://v2.api.noroff.dev/holidaze/venues?limit=${pageSize}&page=${page}`;
 
 function Venues() {
-  const { data, isError, isLoading, page, prevPage, nextPage } = useFetch(url);
+  const { data, isError, isLoading, page, prevPage, nextPage, hasMoreData } =
+    useFetch(url);
 
   if (isLoading) {
     return <div>Loading venues...</div>;
@@ -38,7 +39,7 @@ function Venues() {
           label="<"
         />
         <MyButton
-          disabled={isLoading || data.length === 1} // Disable next button if no data is returned
+          disabled={!hasMoreData} // Disable next button if no data is returned
           onClick={nextPage}
           label=">"
         />
