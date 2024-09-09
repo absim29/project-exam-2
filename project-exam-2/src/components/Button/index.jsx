@@ -1,14 +1,17 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 
-function MyButton({ to, label }) {
+function MyButton({ label, onClick, disabled }) {
   return (
-    <Link to={to}>
-      <Button variant="outline-dark" size="lg" className="px-5">
-        {label}
-      </Button>
-    </Link>
+    <Button
+      variant="outline-dark"
+      size="lg"
+      className="px-5"
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {label}
+    </Button>
   );
 }
 
