@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useAuthForm = (initialState, validateForm, url, handleClose) => {
+function useAuthForm(initialState, validateForm, url) {
   const [userData, setUserData] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -30,10 +30,12 @@ const useAuthForm = (initialState, validateForm, url, handleClose) => {
       }
 
       // Successful submission
+      const username = user.data.name;
       const accessToken = user.data.accessToken;
       localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("username", username);
 
-      handleClose(); // This would need to be passed or managed differently
+      window.location.reload();
     } catch (err) {
       // Handle any errors
       setError(err.message);
@@ -50,6 +52,6 @@ const useAuthForm = (initialState, validateForm, url, handleClose) => {
     validationErrors,
     handleSubmit,
   };
-};
+}
 
 export default useAuthForm;
