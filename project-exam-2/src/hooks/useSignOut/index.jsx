@@ -8,7 +8,7 @@ function useSignOut() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("username");
 
-    navigate("/");
+    navigate("/venues");
     window.location.reload();
   }, [navigate]);
 
