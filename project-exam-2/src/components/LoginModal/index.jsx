@@ -14,18 +14,18 @@ function LoginModal({ show, handleClose }) {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <div className="mb-3">
-            <label htmlFor="username" className="form-label first-font">
-              EMAIL
-            </label>
-            <input type="text" className="form-control" id="username" />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label first-font">
-              PASSWORD
-            </label>
-            <input type="password" className="form-control" id="password" />
-          </div>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>EMAIL</Form.Label>
+            <Form.Control type="email" placeholder="Email" />
+            <Form.Text className="text-muted">
+              Please use a @noroff email.
+            </Form.Text>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>PASSWORD</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+
           <MyButton type="submit" label="LOGIN" />
         </Form>
         <div className="d-flex justify-content-center">
