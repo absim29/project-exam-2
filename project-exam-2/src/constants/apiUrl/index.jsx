@@ -4,3 +4,4 @@ export const LOGIN_API = "/auth/login";
 export const VENUES_API = "/holidaze/venues";
 export const BOOKINGS_API = "/holidaze/bookings";
 export const PROFILES_API = "/holidaze/profiles";
+export const VENUE_MANAGER = "?_holidaze=true";
