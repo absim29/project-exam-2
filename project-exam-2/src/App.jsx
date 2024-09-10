@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Venues from "./pages/Venues";
 import SingleVenue from "./pages/SingleVenue";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         {/* The LandingPage is displayed when the user is at the root URL */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/venues" element={<Venues />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/venues/:id" element={<SingleVenue />} />
         {/* Page not found handler for unmatched routes */}
         <Route
