@@ -5,11 +5,11 @@ import Modal from "react-bootstrap/Modal";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { BASE_API, LOGIN_API } from "../../constants/apiUrl";
+import { BASE_API, LOGIN_API, VENUE_MANAGER } from "../../constants/apiUrl";
 import useAuthForm from "../../hooks/useAuthForm";
 import { validateForm } from "../../constants/FormValidation";
 
-const url = BASE_API + LOGIN_API;
+const url = BASE_API + LOGIN_API + VENUE_MANAGER;
 
 function LoginModal({ show, handleClose }) {
   const initialState = {
