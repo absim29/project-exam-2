@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 
-function MyButton({ label, onClick, disabled }) {
+function MyButton({ label, onClick, disabled, type }) {
   return (
     <Button
       variant="outline-dark"
@@ -9,6 +9,7 @@ function MyButton({ label, onClick, disabled }) {
       className="px-5"
       onClick={onClick}
       disabled={disabled}
+      type={type}
     >
       {label}
     </Button>
