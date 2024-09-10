@@ -28,3 +28,13 @@ video {
 .modal-content {
   background-color: #F0F2EF !important;
 }
+
+.dropdown-menu {
+  background-color: #80A3AB !important;
+  color: black !important;
+}
+
+.dropdown-item.active {
+  background: none !important;
+  color: black !important;
+}
