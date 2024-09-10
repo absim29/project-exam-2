@@ -4,9 +4,10 @@ import VenueCard from "../../components/VenueCard";
 import { useFetch } from "../../hooks/useFetch";
 import MyButton from "../../components/Button";
 import { Spinner } from "react-bootstrap";
+import { BASE_API, VENUES_API } from "../../constants/apiUrl";
 
 const url = (page, pageSize) =>
-  `https://v2.api.noroff.dev/holidaze/venues?limit=${pageSize}&page=${page}`;
+  BASE_API + VENUES_API + `?limit=${pageSize}&page=${page}`;
 
 function Venues() {
   const { data, isError, isLoading, page, prevPage, nextPage, hasMoreData } =

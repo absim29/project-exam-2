@@ -4,8 +4,9 @@ import { useParams } from "react-router-dom";
 import VenuePage from "../../components/VenuePage";
 import { useFetchSingle } from "../../hooks/useFetchSingle";
 import { Spinner } from "react-bootstrap";
+import { BASE_API, VENUES_API } from "../../constants/apiUrl";
 
-const url = "https://v2.api.noroff.dev/holidaze/venues";
+const url = BASE_API + VENUES_API;
 
 function SingleVenue() {
   let { id } = useParams();
