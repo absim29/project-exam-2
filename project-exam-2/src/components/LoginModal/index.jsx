@@ -5,28 +5,65 @@ import Modal from "react-bootstrap/Modal";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { BASE_API, LOGIN_API } from "../../constants/apiUrl";
+import useAuthForm from "../../hooks/useAuthForm";
+import { validateForm } from "../../constants/FormValidation";
+
+const url = BASE_API + LOGIN_API;
 
 function LoginModal({ show, handleClose }) {
+  const initialState = {
+    email: "",
+    password: "",
+  };
+
+  const {
+    userData,
+    setUserData,
+    loading,
+    error,
+    validationErrors,
+    handleSubmit,
+  } = useAuthForm(initialState, validateForm, url, handleClose);
+
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
         <Modal.Title className="first-font">WELCOME BACK</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>EMAIL</Form.Label>
-            <Form.Control type="email" placeholder="Email" />
-            <Form.Text className="text-muted">
-              Please use a @noroff email.
-            </Form.Text>
+            <Form.Control
+              type="email"
+              placeholder="required"
+              value={userData.email}
+              onChange={(e) =>
+                setUserData({ ...userData, email: e.target.value })
+              }
+            />
+            {validationErrors.email && (
+              <p style={{ color: "red" }}>{validationErrors.email}</p>
+            )}
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>PASSWORD</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control
+              type="password"
+              placeholder="required"
+              value={userData.password}
+              onChange={(e) =>
+                setUserData({ ...userData, password: e.target.value })
+              }
+            />
+            {validationErrors.password && (
+              <p style={{ color: "red" }}>{validationErrors.password}</p>
+            )}
           </Form.Group>
+          <MyButton type="submit" label={loading ? "Logging in..." : "LOGIN"} />
 
-          <MyButton type="submit" label="LOGIN" />
+          {error && <p style={{ color: "red" }}>{error}</p>}
         </Form>
         <div className="d-flex justify-content-center">
           <p>-</p>
