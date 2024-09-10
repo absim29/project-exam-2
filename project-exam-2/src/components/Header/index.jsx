@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Navbar, NavDropdown } from "react-bootstrap";
 import LoginModal from "../LoginModal";
 import RegistrationModal from "../RegistrationModal";
+import useSignOut from "../../hooks/useSignOut";
 
 function Header() {
   const headerBackground = {
@@ -30,6 +31,8 @@ function Header() {
     setUsername(storedUsername);
   }, []);
 
+  const signOut = useSignOut();
+
   return (
     <>
       <Navbar sticky="top" className="p-0">
@@ -53,7 +56,7 @@ function Header() {
                 <NavDropdown.Item as={NavLink} to="/manage-bookings">
                   Manage Bookings
                 </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to="/signout">
+                <NavDropdown.Item as={NavLink} onClick={signOut}>
                   Sign Out
                 </NavDropdown.Item>
               </NavDropdown>

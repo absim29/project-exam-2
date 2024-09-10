@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function useAuthForm(initialState, validateForm, url) {
   const [userData, setUserData] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [validationErrors, setValidationErrors] = useState({});
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,6 +38,7 @@ function useAuthForm(initialState, validateForm, url) {
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("username", username);
 
+      navigate("/venues");
       window.location.reload();
     } catch (err) {
       // Handle any errors
