@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../Logo";
 import { NavLink } from "react-router-dom";
 import { Navbar, NavDropdown } from "react-bootstrap";
@@ -14,6 +14,7 @@ function Header() {
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegistrationModal, setShowRegistrationModal] = useState(false);
+  const [username, setUsername] = useState(null);
 
   // Handlers for Login Modal
   const handleShowLogin = () => setShowLoginModal(true);
@@ -22,6 +23,12 @@ function Header() {
   // Handlers for Registration Modal
   const handleShowRegistration = () => setShowRegistrationModal(true);
   const handleCloseRegistration = () => setShowRegistrationModal(false);
+
+  useEffect(() => {
+    // Retrieve the username from local storage
+    const storedUsername = localStorage.getItem("username");
+    setUsername(storedUsername);
+  }, []);
 
   return (
     <>
@@ -32,35 +39,40 @@ function Header() {
             <NavLink to="/venues" className="text-decoration-none text-black">
               Venues
             </NavLink>{" "}
-            <NavLink
-              onClick={handleShowLogin}
-              className="text-decoration-none text-black"
-            >
-              Login
-            </NavLink>
-            <NavLink
-              onClick={handleShowRegistration}
-              className="text-decoration-none text-black"
-            >
-              Register
-            </NavLink>
-            {/* <NavDropdown title="Username" menuVariant="light" drop="start">
-              <NavDropdown.Item as={NavLink} to="/profile">
-                My Profile
-              </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/bookings">
-                My Bookings
-              </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/favourites">
-                Favourites
-              </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/manage-bookings">
-                Manage Bookings
-              </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/signout">
-                Sign Out
-              </NavDropdown.Item>
-            </NavDropdown> */}
+            {username ? (
+              <NavDropdown title={username} menuVariant="light" drop="start">
+                <NavDropdown.Item as={NavLink} to="/profile">
+                  My Profile
+                </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/bookings">
+                  My Bookings
+                </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/favourites">
+                  Favourites
+                </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/manage-bookings">
+                  Manage Bookings
+                </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/signout">
+                  Sign Out
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <>
+                <NavLink
+                  onClick={handleShowLogin}
+                  className="text-decoration-none text-black"
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  onClick={handleShowRegistration}
+                  className="text-decoration-none text-black"
+                >
+                  Register
+                </NavLink>
+              </>
+            )}
           </ul>
         </div>
       </Navbar>
