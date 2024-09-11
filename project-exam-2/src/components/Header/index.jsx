@@ -35,7 +35,7 @@ function Header() {
 
   return (
     <>
-      <Navbar sticky="top" className="p-0">
+      <Navbar sticky="top" className="p-0 first-font">
         <div style={headerBackground} className="w-100">
           <Logo />
           <ul className="d-flex justify-content-end gap-3 pt-3 px-2">
