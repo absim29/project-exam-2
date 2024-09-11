@@ -27,8 +27,8 @@ function useFetchSingle(apiUrl, id) {
 
       setIsLoading(false);
     }
-
-    fetchData(`${apiUrl}/${id}`);
+    // Directly append the query parameter ?_bookings=true to find the venue bookings
+    fetchData(`${apiUrl}/${id}?_bookings=true`);
   }, [apiUrl, id]);
 
   return {
