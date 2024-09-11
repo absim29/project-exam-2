@@ -3,21 +3,22 @@ import Layout from "../../components/Layout";
 import { useParams } from "react-router-dom";
 import VenuePage from "../../components/VenuePage";
 import { useFetchSingle } from "../../hooks/useFetchSingle";
-import { Spinner } from "react-bootstrap";
 import { BASE_API, VENUES_API } from "../../constants/apiUrl";
+import { Box, LinearProgress } from "@mui/material";
 
 const url = BASE_API + VENUES_API;
 
 function SingleVenue() {
   let { id } = useParams();
   const { data, isError, isLoading } = useFetchSingle(url, id);
+  console.log(data);
 
   return (
     <Layout>
       {isLoading ? (
-        <Spinner animation="border" role="status" className="text-black">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
+        <Box sx={{ width: "50%" }}>
+          <LinearProgress />
+        </Box>
       ) : isError ? (
         <div>Error loading data</div>
       ) : !data ? (
