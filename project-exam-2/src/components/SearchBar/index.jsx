@@ -14,6 +14,7 @@ function SearchBar({ onSearch }) {
           value={input}
           placeholder="Search venues..."
           onChange={handleSearch}
+          className="rounded-3 mb-4"
         />
       </div>
     </>
