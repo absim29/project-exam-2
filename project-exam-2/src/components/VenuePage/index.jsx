@@ -1,6 +1,7 @@
 import React from "react";
 import VenueImage from "../../assets/venue-card.jpg";
 import Rating from "@mui/material/Rating";
+// import MyButton from "../Button";
 
 function VenuePage({ venue }) {
   // Extract relevant details from the venue data
@@ -25,22 +26,23 @@ function VenuePage({ venue }) {
 
   return (
     <>
-      <div>
-        <h2 className="first-font fs-5 mt-2">{name}</h2>
+      <div className="d-flex flex-column w-75 mt-0">
+        <h2 className="first-font fs-4 mt-2">{name}</h2>
         <img
           src={media.length > 0 && media[0].url ? media[0].url : VenueImage}
           alt={media.length > 0 && media[0].alt ? media[0].alt : name}
+          className="w-100 rounded-4 shadow mb-2"
         />
         <h3 className="first-font fs-6">
           {locationString || "Location Unavailable"}
         </h3>
         <Rating name="size-small" value={rating || 0} size="small" readOnly />
-        <h4 className="first-font fs-4">Price: ${price}</h4>
-        <h4 className="first-font fs-4">Max Guests: {maxGuests}</h4>
-        <h4 className="second-font fs-4">Description</h4>
-        <p>{description}</p>
-        <h4 className="second-font fs-4">Amenities</h4>
-        <ul>
+        <h4 className="first-font fs-6">Price: ${price}</h4>
+        <h4 className="first-font fs-6">Max Guests: {maxGuests}</h4>
+        <h4 className="second-font fs-3">Description</h4>
+        <p className="third-font">{description}</p>
+        <h4 className="second-font fs-3">Amenities</h4>
+        <ul className="third-font">
           <li
             className={`amenity ${
               amenities.wifi ? "amenity-available" : "amenity-unavailable"
@@ -70,9 +72,10 @@ function VenuePage({ venue }) {
             {amenities.pets ? "Pet Friendly" : "No Pets Allowed"}
           </li>
         </ul>
-        <h4 className="second-font fs-4">Location</h4>
-        <p>{locationString}</p>
+        <h4 className="second-font fs-3">Location</h4>
+        <p className="third-font">{locationString}</p>
       </div>
+      {/* <MyButton label="Book" onClick={handleShow} /> */}
     </>
   );
 }
