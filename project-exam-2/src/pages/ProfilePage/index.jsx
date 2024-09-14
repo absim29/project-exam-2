@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
-import { Spinner } from "react-bootstrap";
-import { BASE_API, PROFILES_API } from "../../constants/apiUrl";
+import {
+  BASE_API,
+  EXTRAS_PROFILE_API,
+  PROFILES_API,
+} from "../../constants/apiUrl";
 import Profile from "../../components/Profile";
 import useGetProfile from "../../hooks/useGetProfile";
+import { Box, LinearProgress } from "@mui/material";
 
 const url = BASE_API + PROFILES_API;
 
@@ -18,14 +22,18 @@ function ProfilePage() {
     }
   }, []);
 
-  const { data, isError, isLoading } = useGetProfile(url, username);
+  const urlWithParams = username
+    ? `${url}/${username}${EXTRAS_PROFILE_API}`
+    : null;
+
+  const { data, isError, isLoading } = useGetProfile(urlWithParams);
 
   return (
     <Layout>
       {isLoading ? (
-        <Spinner animation="border" role="status" className="text-black">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
+        <Box sx={{ width: "50%" }}>
+          <LinearProgress />
+        </Box>
       ) : isError ? (
         <div>Error loading user</div>
       ) : !data ? (
