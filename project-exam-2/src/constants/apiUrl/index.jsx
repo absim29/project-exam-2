@@ -5,6 +5,7 @@ export const VENUES_API = "/holidaze/venues";
 export const BOOKINGS_API = "/holidaze/bookings";
 export const PROFILES_API = "/holidaze/profiles";
 export const VENUE_MANAGER = "?_holidaze=true";
+export const EXTRAS_PROFILE_API = "?_bookings=true&?_venues=true";
 
 export const API_KEY_AUTH = "/auth/create-api-key";
 export const API_KEY = "23bd9a9e-044a-4859-a711-2172c0f92186";
