@@ -1,7 +1,7 @@
 import React from "react";
 import VenueImage from "../../assets/venue-card.jpg";
 import Rating from "@mui/material/Rating";
-// import MyButton from "../Button";
+import Calendar from "../Calendar";
 
 function VenuePage({ venue }) {
   // Extract relevant details from the venue data
@@ -14,6 +14,8 @@ function VenuePage({ venue }) {
     location,
     maxGuests,
     meta: amenities = {},
+    bookings,
+    id: venueId,
   } = venue;
 
   const locationString = [
@@ -23,6 +25,8 @@ function VenuePage({ venue }) {
         }${location.country || ""}`
       : "Location Unavailable",
   ];
+
+  console.log(bookings);
 
   return (
     <>
@@ -75,7 +79,17 @@ function VenuePage({ venue }) {
         <h4 className="second-font fs-3">Location</h4>
         <p className="third-font">{locationString}</p>
       </div>
-      {/* <MyButton label="Book" onClick={handleShow} /> */}
+      <h4 className="second-font fs-3">Bookings</h4>
+      <ul className="third-font">
+        {bookings.map((booking) => (
+          <li key={booking.id} className="booking-period">
+            {`${new Date(booking.dateFrom).toLocaleDateString()} - ${new Date(
+              booking.dateTo
+            ).toLocaleDateString()}`}
+          </li>
+        ))}
+      </ul>
+      <Calendar bookings={bookings} maxGuests={maxGuests} venueId={venueId} />
     </>
   );
 }
