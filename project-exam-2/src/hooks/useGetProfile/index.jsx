@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { API_KEY } from "../../constants/apiUrl";
 // import { API_KEY_AUTH, BASE_API } from "../../constants/apiUrl";
 
-function useGetProfile(apiUrl, name) {
+function useGetProfile(apiUrl) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -52,7 +52,6 @@ function useGetProfile(apiUrl, name) {
         }
 
         const result = await response.json();
-        // setData(result.data);
 
         console.log(result);
 
@@ -71,16 +70,12 @@ function useGetProfile(apiUrl, name) {
       }
     }
 
-    if (name && apiUrl) {
-      fetchData(`${apiUrl}/${name}`);
-    } else {
-      console.warn("Username or API URL is missing."); // Debugging line
-      setIsLoading(false); // Stop loading if name or apiUrl is not provided
-    }
+    fetchData(apiUrl);
+
     return () => {
       isMounted = false;
     };
-  }, [apiUrl, name]);
+  }, [apiUrl]);
 
   return {
     data,
