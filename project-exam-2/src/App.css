@@ -1,15 +1,3 @@
-/*Background landing page*/
-.video-container {
-  width: 100%;
-  height: 100vh;
-}
-
-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /*Venue card*/
 .venue-card {
   width: 260px;
@@ -35,4 +23,10 @@ video {
 .dropdown-item.active {
   background: none !important;
   color: black !important;
+}
+
+/*Bootstrap overrides*/
+:root {
+  --bs-primary: #80A3AB !important;
+  --bs-secondary: #ECCB99;
 }
