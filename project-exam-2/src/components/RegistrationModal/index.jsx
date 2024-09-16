@@ -5,9 +5,9 @@ import Modal from "react-bootstrap/Modal";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { validateForm } from "../../constants/FormValidation";
 import { BASE_API, REGISTER_API } from "../../constants/apiUrl";
 import useAuthForm from "../../hooks/useAuthForm";
+import { validateForm } from "../../functions/FormValidation";
 
 const url = BASE_API + REGISTER_API;
 

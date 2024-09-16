@@ -23,13 +23,26 @@ export const validateForm = (userData, setValidationErrors) => {
     errors.bio = "Bio must be less than 160 characters.";
   }
 
-  // // Avatar URL validation
+  // // Avatar validation
   // if (userData.avatar) {
-  //   try {
-  //     new URL(userData.avatar);
-  //   } catch (_) {
-  //     errors.avatar = "Avatar URL must be a valid URL.";
+  //   // Check if avatar is an object with a URL
+  //   if (typeof userData.avatar !== "object" || !userData.avatar.url) {
+  //     errors.avatar = "Avatar must be an object with a URL.";
+  //   } else {
+  //     // Validate URL
+  //     try {
+  //       new URL(userData.avatar.url);
+  //     } catch (_) {
+  //       errors.avatarUrl = "Avatar URL must be a valid URL.";
+  //     }
+
+  //     // Validate alt text if provided
+  //     if (userData.avatar.alt && typeof userData.avatar.alt !== "string") {
+  //       errors.avatarAlt = "Avatar alt text must be a string.";
+  //     }
   //   }
+  // } else {
+  //   errors.avatar = "Avatar is required.";
   // }
 
   setValidationErrors(errors);
