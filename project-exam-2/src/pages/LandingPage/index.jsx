@@ -3,7 +3,7 @@ import BackgroundVideo from "../../components/BackgroundVideo";
 import MyButton from "../../components/Button";
 import Logo from "../../components/Logo";
 import { Link } from "react-router-dom";
-import LoginModal from "../../components/LoginModal";
+import LoginModal from "../../components/Modals/LoginModal";
 
 function LandingPage() {
   const [showModal, setShowModal] = useState(false);

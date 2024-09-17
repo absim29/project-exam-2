@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { EXTRAS_VENUE_API } from "../../constants/apiUrl";
 
 function useFetchSingle(apiUrl, id) {
   const [data, setData] = useState(null);
@@ -28,7 +29,7 @@ function useFetchSingle(apiUrl, id) {
       setIsLoading(false);
     }
     // Directly append the query parameter ?_bookings=true to find the venue bookings
-    fetchData(`${apiUrl}/${id}?_bookings=true`);
+    fetchData(`${apiUrl}/${id}${EXTRAS_VENUE_API}`);
   }, [apiUrl, id]);
 
   return {

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Logo from "../Logo";
 import { NavLink } from "react-router-dom";
 import { Navbar, NavDropdown } from "react-bootstrap";
-import LoginModal from "../LoginModal";
-import RegistrationModal from "../RegistrationModal";
 import useSignOut from "../../hooks/useSignOut";
+import LoginModal from "../Modals/LoginModal";
+import RegistrationModal from "../Modals/RegistrationModal";
 
 function Header() {
   const headerBackground = {

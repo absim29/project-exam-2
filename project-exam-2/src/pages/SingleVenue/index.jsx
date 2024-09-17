@@ -24,7 +24,7 @@ function SingleVenue() {
       ) : !data ? (
         <div>No venue data found. Please check the ID or try again later.</div>
       ) : (
-        <VenuePage key={data.id} venue={data} />
+        <VenuePage venue={data} />
       )}
     </Layout>
   );
