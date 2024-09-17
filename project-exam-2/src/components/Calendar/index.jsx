@@ -5,7 +5,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import MyButton from "../Button";
 import BookingRequest from "../../functions/BookingRequest";
 
-function Calendar({ bookings = [], maxGuests, venueId }) {
+function Calendar({ bookings = [], maxGuests, venueId, isOwner }) {
   const [date, setDate] = useState({
     dateFrom: new Date(),
     dateTo: new Date(),
@@ -81,20 +81,24 @@ function Calendar({ bookings = [], maxGuests, venueId }) {
         onChange={handleChange}
         disabledDates={disabledDates}
       />
+      {/* Conditional rendering of the Book button */}
+      {!isOwner && (
+        <div>
+          <div>
+            <label>Number of Guests: </label>
+            <input
+              type="number"
+              value={guests}
+              min={1}
+              max={maxGuests} // Enforce max guest count in the input field
+              onChange={(e) => setGuests(Number(e.target.value))}
+            />
+            {error && <p style={{ color: "red" }}>{error}</p>}
+          </div>
 
-      <div>
-        <label>Number of Guests: </label>
-        <input
-          type="number"
-          value={guests}
-          min={1}
-          max={maxGuests} // Enforce max guest count in the input field
-          onChange={(e) => setGuests(Number(e.target.value))}
-        />
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </div>
-
-      <MyButton onClick={handleBooking} label="Book" />
+          <MyButton onClick={handleBooking} label="Book" />
+        </div>
+      )}
     </>
   );
 }
