@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import VenueImage from "../../assets/venue-card.jpg";
+import ProfileImage from "../../assets/user-image.jpg";
 import Rating from "@mui/material/Rating";
 import Calendar from "../Calendar";
+import MyButton from "../Button";
+import EditVenueModal from "../Modals/EditVenueModal";
+import DeleteVenueModal from "../Modals/DeleteVenueModal";
 
 function VenuePage({ venue }) {
   // Extract relevant details from the venue data
@@ -16,6 +20,7 @@ function VenuePage({ venue }) {
     meta: amenities = {},
     bookings,
     id: venueId,
+    owner,
   } = venue;
 
   const locationString = [
@@ -26,7 +31,30 @@ function VenuePage({ venue }) {
       : "Location Unavailable",
   ];
 
-  console.log(bookings);
+  // State to hold logged-in user info
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  // Get logged-in user info from localStorage when component mounts
+  useEffect(() => {
+    const storedUser = localStorage.getItem("email");
+    if (storedUser) {
+      setLoggedInUser(storedUser);
+    }
+  }, []);
+
+  // Check if the logged-in user is the owner of the venue
+  const isOwner = loggedInUser && owner.email === loggedInUser;
+
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  // Handlers for Edit Venue Modal
+  const handleShowEditVenue = () => setShowEditModal(true);
+  const handleCloseEditVenue = () => setShowEditModal(false);
+
+  // Handlers for Delete Venue Modal
+  const handleShowDeleteVenue = () => setShowDeleteModal(true);
+  const handleCloseDeleteVenue = () => setShowDeleteModal(false);
 
   return (
     <>
@@ -89,7 +117,41 @@ function VenuePage({ venue }) {
           </li>
         ))}
       </ul>
-      <Calendar bookings={bookings} maxGuests={maxGuests} venueId={venueId} />
+      <Calendar
+        bookings={bookings}
+        maxGuests={maxGuests}
+        venueId={venueId}
+        isOwner={isOwner}
+      />
+      <div>
+        <h4 className="second-font fs-3">Host</h4>
+        <img
+          src={
+            owner.avatar && owner.avatar.url ? owner.avatar.url : ProfileImage
+          }
+          alt={owner.avatar && owner.avatar.alt ? owner.avatar.alt : name}
+          className="w-25 rounded-circle shadow mb-2"
+        />
+        <p className="first-font">{owner.name}</p>
+      </div>
+
+      {/* Conditional rendering if the logged-in user is the owner */}
+      {isOwner && (
+        <div className="owner-actions">
+          <h4 className="second-font fs-3">Owner Actions</h4>
+          <MyButton onClick={handleShowEditVenue} label="Edit Venue" />
+          <EditVenueModal
+            show={showEditModal}
+            handleClose={handleCloseEditVenue}
+            venue={venue}
+          />
+          <MyButton onClick={handleShowDeleteVenue} label="Delete Venue" />
+          <DeleteVenueModal
+            show={showDeleteModal}
+            handleClose={handleCloseDeleteVenue}
+          />
+        </div>
+      )}
     </>
   );
 }
