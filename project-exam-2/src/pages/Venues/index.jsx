@@ -23,6 +23,11 @@ function Venues() {
       )
     : [];
 
+  // Reset to the first page when the search query changes
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
   // Implement local pagination: slice the filtered results for the current page
   const indexOfLastVenue = currentPage * venuesPerPage;
   const indexOfFirstVenue = indexOfLastVenue - venuesPerPage;
