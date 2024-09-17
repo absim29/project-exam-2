@@ -26,6 +26,9 @@ function VenueCard({ venue }) {
             src={media.length > 0 && media[0].url ? media[0].url : VenueImage}
             alt={media.length > 0 && media[0].alt ? media[0].alt : name}
             className="card-image rounded-5 shadow"
+            onError={(e) => {
+              e.target.src = VenueImage;
+            }}
           />
           <h2 className="first-font fs-5 mt-2">{name}</h2>
           <h3 className="first-font fs-6">{locationString}</h3>
