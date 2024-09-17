@@ -35,8 +35,10 @@ function useAuthForm(initialState, validateForm, url) {
       // Successful submission
       const username = user.data.name;
       const accessToken = user.data.accessToken;
+      const email = user.data.email;
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("username", username);
+      localStorage.setItem("email", email);
 
       navigate("/venues");
       window.location.reload();
