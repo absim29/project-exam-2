@@ -6,13 +6,14 @@ import MyButton from "../../components/Button";
 import { BASE_API, VENUES_API } from "../../constants/apiUrl";
 import SearchBar from "../../components/SearchBar";
 import { Box, LinearProgress } from "@mui/material";
+import { motion } from "framer-motion";
 
 const url = BASE_API + VENUES_API;
 
 function Venues() {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1); // Local pagination state
-  const venuesPerPage = 10;
+  const venuesPerPage = 12;
 
   const { data: allVenues, isError, isLoading } = useFetch(url);
   console.log(allVenues);
@@ -61,16 +62,33 @@ function Venues() {
         <div>Error loading data</div>
       ) : (
         <>
-          {currentVenues.length === 0 ? (
-            <div>No more venues available at this time.</div>
-          ) : (
-            <div className="d-flex flex-wrap justify-content-center gap-4 mx-5 px-5">
-              {currentVenues.map((venue) => (
-                <VenueCard key={venue.id} venue={venue} />
-              ))}
-            </div>
-          )}
-          <div className="d-flex w-50 pb-5 justify-content-between">
+          <motion.div
+            key={currentPage} // Ensure a unique key for each page
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            {currentVenues.length === 0 ? (
+              <div>No more venues available at this time.</div>
+            ) : (
+              <div className="d-flex flex-wrap justify-content-center gap-4 mx-xxl-5 mx-xxl-5 mx-xl-5 mx-lg-5 mx-md-5 px-xxl-5">
+                {currentVenues.map((venue) => (
+                  <motion.div
+                    key={venue.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                  >
+                    <VenueCard venue={venue} />
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </motion.div>
+
+          <div className="d-flex pb-5 justify-content-between gap-5">
             <MyButton
               disabled={currentPage === 1} // Disable previous button if on the first page
               onClick={prevPage}
