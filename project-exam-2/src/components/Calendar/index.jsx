@@ -7,8 +7,8 @@ import BookingRequest from "../../functions/BookingRequest";
 
 function Calendar({ bookings = [], maxGuests, venueId, isOwner }) {
   const [date, setDate] = useState({
-    dateFrom: new Date(),
-    dateTo: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
     key: "selection",
   });
 
@@ -80,10 +80,11 @@ function Calendar({ bookings = [], maxGuests, venueId, isOwner }) {
         months={1}
         onChange={handleChange}
         disabledDates={disabledDates}
+        className="shadow-sm"
       />
       {/* Conditional rendering of the Book button */}
       {!isOwner && (
-        <div>
+        <div className="d-flex flex-column gap-3 align-items-center mt-4 mb-4">
           <div>
             <label>Number of Guests: </label>
             <input
