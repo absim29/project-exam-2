@@ -1,9 +1,13 @@
 import React from "react";
+import CopyrightIcon from "@mui/icons-material/Copyright";
 
 function Footer() {
   return (
-    <footer className="d-flex justify-content-center">
-      <p>All rights reserved. Copyright 2024 - HOLIDAZE</p>
+    <footer className="d-flex justify-content-center p-2">
+      <p className="mb-0 d-flex">
+        <CopyrightIcon />
+        2024 HOLIDAZE | All rights reserved
+      </p>
     </footer>
   );
 }
