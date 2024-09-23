@@ -3,7 +3,7 @@ import video from "../../assets/tropical-video.mp4";
 
 function BackgroundVideo() {
   return (
-    <div className="w-100 vh-100">
+    <div className="w-100 vh-100 overflow: hidden;">
       <video
         style={{ objectFit: "cover" }}
         src={video}
