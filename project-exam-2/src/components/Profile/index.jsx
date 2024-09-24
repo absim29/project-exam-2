@@ -71,7 +71,7 @@ function Profile({ user }) {
         <p className="third-font fs-5">{bio}</p>
       </div>
 
-      <div className="d-flex flex-wrap justify-content-center gap-5">
+      <div className="d-flex flex-wrap justify-content-center gap-5 mt-4">
         <div
           className="d-flex flex-column align-items-center mb-4"
           style={{ width: "300px" }}
@@ -99,7 +99,7 @@ function Profile({ user }) {
           ) : (
             <>
               <MyButton
-                label="BECOME VENUE MANAGER"
+                label="Register as manager"
                 onClick={handleShowVenueManager}
               />
 
@@ -115,20 +115,20 @@ function Profile({ user }) {
           className="d-flex flex-column align-items-center"
           style={{ width: "300px" }}
         >
-          <h4 className="second-font fs-1">Upcoming Bookings</h4>
+          <h4 className="second-font fs-1">My Bookings</h4>
 
-          <MyCarousel>
-            {bookings.length > 0 ? (
-              bookings.map((booking, index) => (
+          {bookings.length > 0 ? (
+            <MyCarousel>
+              {bookings.map((booking, index) => (
                 <VenueCard
                   key={`${booking.id}-${index}`} // Use a combination to ensure uniqueness
                   venue={booking.venue}
                 />
-              ))
-            ) : (
-              <p className="third-font fs-4">No bookings</p>
-            )}
-          </MyCarousel>
+              ))}
+            </MyCarousel>
+          ) : (
+            <p className="third-font fs-4">No bookings</p>
+          )}
         </div>
       </div>
     </>
