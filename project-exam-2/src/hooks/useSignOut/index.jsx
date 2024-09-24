@@ -7,6 +7,8 @@ function useSignOut() {
   const signOut = useCallback(() => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("avatarUrl");
 
     navigate("/venues");
     window.location.reload();
