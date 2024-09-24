@@ -34,13 +34,15 @@ function useLoginForm(initialState, validateForm) {
         throw new Error(user.message || "Login failed. Please try again.");
       }
 
-      // Successful submission
+      // On Successful login
       const username = user.data.name;
       const accessToken = user.data.accessToken;
       const email = user.data.email;
+      const avatarUrl = user.data.avatar.url;
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("username", username);
       localStorage.setItem("email", email);
+      localStorage.setItem("avatarUrl", avatarUrl);
 
       navigate("/venues"); // Navigate to venues after login
       window.location.reload(); // Reload if needed
