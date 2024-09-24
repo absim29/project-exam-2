@@ -26,6 +26,16 @@ footer {
   color: black !important;
 }
 
+.dropdown-menu.show {
+  right: 0 !important;
+  left: auto !important;
+  top: auto !important;
+}
+
+.dropdown {
+  position: static !important;
+}
+
 .rdrMonth {
   width: 23.667em !important;
 }
