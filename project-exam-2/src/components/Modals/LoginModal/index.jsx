@@ -8,6 +8,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import useLoginForm from "../../../hooks/useLoginForm";
 import { validateForm } from "../../../functions/FormValidation";
 import MyButton from "../../Button";
+import { Divider } from "@mui/material";
 
 // const url = BASE_API + LOGIN_API + VENUE_MANAGER;
 
@@ -29,7 +30,7 @@ function LoginModal({ show, handleClose }) {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title className="first-font">WELCOME BACK</Modal.Title>
+        <Modal.Title className="first-font">Welcome back!</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
@@ -37,7 +38,7 @@ function LoginModal({ show, handleClose }) {
             <Form.Label>EMAIL</Form.Label>
             <Form.Control
               type="email"
-              placeholder="required"
+              placeholder="Your email"
               value={userData.email}
               onChange={(e) =>
                 setUserData({ ...userData, email: e.target.value })
@@ -51,7 +52,7 @@ function LoginModal({ show, handleClose }) {
             <Form.Label>PASSWORD</Form.Label>
             <Form.Control
               type="password"
-              placeholder="required"
+              placeholder="Password"
               value={userData.password}
               onChange={(e) =>
                 setUserData({ ...userData, password: e.target.value })
@@ -61,16 +62,19 @@ function LoginModal({ show, handleClose }) {
               <p style={{ color: "red" }}>{validationErrors.password}</p>
             )}
           </Form.Group>
-          <MyButton type="submit" label={loading ? "Logging in..." : "LOGIN"} />
+          <div className="d-flex justify-content-center mt-4">
+            <MyButton
+              type="submit"
+              label={loading ? "Logging in..." : "LOGIN"}
+            />
+          </div>
 
           {error && <p style={{ color: "red" }}>{error}</p>}
         </Form>
-        <div className="d-flex justify-content-center">
-          <p>-</p>
-          <p>OR</p>
-          <p>-</p>
-        </div>
-        <div className="d-flex justify-content-center">
+
+        <Divider className="my-4">OR</Divider>
+
+        <div className="d-flex justify-content-center mb-4">
           <GoogleIcon fontSize="large" />
           <FacebookIcon fontSize="large" />
           <LinkedInIcon fontSize="large" />

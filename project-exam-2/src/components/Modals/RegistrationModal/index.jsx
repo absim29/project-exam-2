@@ -4,12 +4,10 @@ import Modal from "react-bootstrap/Modal";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-// import { BASE_API, REGISTER_API } from "../../../constants/apiUrl";
 import useRegistrationForm from "../../../hooks/useRegistrationForm";
 import { validateForm } from "../../../functions/FormValidation";
 import MyButton from "../../Button";
-
-// const url = BASE_API + REGISTER_API;
+import { Divider } from "@mui/material";
 
 function RegistrationModal({ show, handleClose, handleOpenLogin }) {
   const initialState = {
@@ -32,7 +30,7 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title className="first-font">REGISTRATION</Modal.Title>
+        <Modal.Title className="first-font">Registration Form</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
@@ -40,7 +38,7 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
             <Form.Label>NAME</Form.Label>
             <Form.Control
               type="text"
-              placeholder="required"
+              placeholder="Your name"
               value={userData.name}
               onChange={(e) =>
                 setUserData({ ...userData, name: e.target.value })
@@ -54,7 +52,7 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
             <Form.Label>EMAIL</Form.Label>
             <Form.Control
               type="email"
-              placeholder="required"
+              placeholder="Your email"
               value={userData.email}
               onChange={(e) =>
                 setUserData({ ...userData, email: e.target.value })
@@ -68,7 +66,7 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
             <Form.Label>PASSWORD</Form.Label>
             <Form.Control
               type="password"
-              placeholder="required"
+              placeholder="Password"
               value={userData.password}
               onChange={(e) =>
                 setUserData({ ...userData, password: e.target.value })
@@ -99,7 +97,7 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
             <Form.Label>BIO</Form.Label>
             <Form.Control
               type="text"
-              placeholder="optional"
+              placeholder="Biography"
               value={userData.bio}
               onChange={(e) =>
                 setUserData({ ...userData, bio: e.target.value })
@@ -119,19 +117,22 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
               }
             />
           </Form.Group>
-          <MyButton
-            type="submit"
-            label={loading ? "Registering..." : "REGISTER"}
-          />
-
+          <p className="fst-italic">
+            By registering, you agree to our Terms of Service and Privacy
+            Policy.
+          </p>
+          <div className="d-flex justify-content-center">
+            <MyButton
+              type="submit"
+              label={loading ? "Registering..." : "Register"}
+            />
+          </div>
           {error && <p style={{ color: "red" }}>{error}</p>}
         </Form>
-        <div className="d-flex justify-content-center">
-          <p>-</p>
-          <p>OR</p>
-          <p>-</p>
-        </div>
-        <div className="d-flex justify-content-center">
+
+        <Divider className="my-5">OR</Divider>
+
+        <div className="d-flex justify-content-center mb-5">
           <GoogleIcon fontSize="large" />
           <FacebookIcon fontSize="large" />
           <LinkedInIcon fontSize="large" />
