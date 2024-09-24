@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Logo() {
   const logoStyle = {
     width: "200px",
-    height: "100px",
+    height: "90px",
     objectFit: "cover",
   };
   return (
