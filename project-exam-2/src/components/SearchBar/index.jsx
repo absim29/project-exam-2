@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import SearchIcon from "@mui/icons-material/Search";
+import { Form } from "react-bootstrap";
 
 function SearchBar({ onSearch }) {
   const [input, setInput] = useState("");
@@ -7,17 +9,25 @@ function SearchBar({ onSearch }) {
     onSearch(e.target.value); // Pass the input value to the parent
   };
   return (
-    <>
-      <div>
-        <input
-          type="text"
-          value={input}
-          placeholder="Search venues..."
-          onChange={handleSearch}
-          className="rounded-3 mb-4"
-        />
-      </div>
-    </>
+    <div className="position-relative mb-4">
+      <Form.Control
+        type="text"
+        value={input}
+        placeholder="Search venues..."
+        onChange={handleSearch}
+        className="rounded-3 px-5" // Padding left to avoid overlap with the icon
+        style={{ border: "1px solid #ccc" }} // Adding a light border
+      />
+      <SearchIcon
+        className="position-absolute"
+        style={{
+          left: "10px",
+          top: "50%",
+          transform: "translateY(-50%)", // Center the icon vertically
+          color: "#aaa",
+        }}
+      />
+    </div>
   );
 }
 
