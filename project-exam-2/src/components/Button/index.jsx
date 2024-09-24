@@ -6,7 +6,7 @@ function MyButton({ label, onClick, disabled, type }) {
     <Button
       variant="outline-dark"
       size="lg"
-      className="px-5 custom-color rounded-pill"
+      className="px-5 custom-color rounded-pill shadow-sm"
       onClick={onClick}
       disabled={disabled}
       type={type}
