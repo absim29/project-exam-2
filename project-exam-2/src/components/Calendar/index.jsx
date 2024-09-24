@@ -80,6 +80,7 @@ function Calendar({ bookings = [], maxGuests, venueId, isOwner }) {
         months={1}
         onChange={handleChange}
         disabledDates={disabledDates}
+        minDate={new Date()} // Disable past dates
         className="shadow-sm"
       />
       {/* Conditional rendering of the Book button */}
