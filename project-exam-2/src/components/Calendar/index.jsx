@@ -93,6 +93,8 @@ function Calendar({ bookings = [], maxGuests, venueId, isOwner }) {
               min={1}
               max={maxGuests} // Enforce max guest count in the input field
               onChange={(e) => setGuests(Number(e.target.value))}
+              style={{ width: "40px", border: "none" }}
+              className="rounded shadow-sm"
             />
             {error && <p style={{ color: "red" }}>{error}</p>}
           </div>
