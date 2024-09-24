@@ -16,7 +16,7 @@ function Venues() {
   const venuesPerPage = 12;
 
   const { data: allVenues, isError, isLoading } = useFetch(url);
-  console.log(allVenues);
+
   // Filter the venues based on the search query
   const filteredVenues = allVenues
     ? allVenues.filter((venue) =>
