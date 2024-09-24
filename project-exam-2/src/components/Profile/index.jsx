@@ -5,6 +5,8 @@ import VenueCard from "../VenueCard";
 import AvatarModal from "../Modals/AvatarModal";
 import VenueManagerModal from "../Modals/VenueManagerModal";
 import AddVenueModal from "../Modals/AddVenueModal";
+import MyCarousel from "../Carousel";
+import { motion } from "framer-motion";
 
 function Profile({ user }) {
   const [showEditProfileModal, setShowEditProfileModal] = useState(false);
@@ -23,11 +25,19 @@ function Profile({ user }) {
 
   return (
     <>
-      <div className="profile-card d-flex justify-content-between bg-white p-5 w-50 m-5 rounded gap-5 shadow">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        className="col-sm-11 col-md-7 col-3 d-flex flex-row flex-wrap flex-md-nowrap justify-content-center bg-white p-3 m-5 rounded gap-5 shadow"
+        style={{ maxWidth: "500px", minWidth: "300px" }}
+      >
         <img
           src={avatar.url.length > 0 && avatar.url ? avatar.url : UserImage}
           alt={avatar.url.length > 0 && avatar.alt ? avatar.alt : name}
-          className="rounded-circle w-50"
+          className="rounded-circle"
+          style={{ width: "200px", height: "200px", objectFit: "cover" }}
           onError={(e) => {
             e.target.src = UserImage;
           }}
@@ -36,12 +46,14 @@ function Profile({ user }) {
           <div>
             <h4 className="first-font fs-4">{name}</h4>
           </div>
+
           <div>
-            <h4 className="first-font fs-4">
+            <h4 className="third-font fs-5">
               {venueManager ? "Venue manager: Yes" : "Venue manager: No"}
             </h4>
-            <h4 className="first-font fs-4">Bookings: {_count.bookings}</h4>
+            <h4 className="third-font fs-5">Bookings: {_count.bookings}</h4>
           </div>
+
           <MyButton label="Edit Profile" onClick={handleShowEditProfile} />
           <AvatarModal
             show={showEditProfileModal}
@@ -49,17 +61,25 @@ function Profile({ user }) {
             user={user}
           />
         </div>
+        {/* </div> */}
+      </motion.div>
+      <div
+        className="w-75 ml-4"
+        style={{ maxWidth: "600px", minWidth: "300px" }}
+      >
+        <h4 className="second-font fs-1">Bio</h4>
+        <p className="third-font fs-5">{bio}</p>
       </div>
 
-      <h4 className="second-font fs-1">Bio</h4>
-      <p className="third-font fs-4">{bio}</p>
-
-      <div className="d-flex gap-5">
-        <div className="d-flex flex-column">
+      <div className="d-flex flex-wrap justify-content-center gap-5">
+        <div
+          className="d-flex flex-column align-items-center mb-4"
+          style={{ width: "300px" }}
+        >
           <h4 className="second-font fs-1">Hosted Venues</h4>
           {venueManager ? (
             <>
-              <ul className="third-font fs-4">
+              <MyCarousel>
                 {venues.length > 0 ? (
                   venues.map((venue) => (
                     <VenueCard key={venue.id} venue={venue} />
@@ -67,7 +87,8 @@ function Profile({ user }) {
                 ) : (
                   <p className="third-font fs-4">No venues</p>
                 )}
-              </ul>
+              </MyCarousel>
+
               <MyButton label="New Venue" onClick={handleShowAddVenue} />
               <AddVenueModal
                 show={showAddVenueModal}
@@ -90,20 +111,24 @@ function Profile({ user }) {
             </>
           )}
         </div>
-        <div className="d-flex flex-column">
+        <div
+          className="d-flex flex-column align-items-center"
+          style={{ width: "300px" }}
+        >
           <h4 className="second-font fs-1">Upcoming Bookings</h4>
-          <ul className="third-font fs-4">
+
+          <MyCarousel>
             {bookings.length > 0 ? (
               bookings.map((booking, index) => (
                 <VenueCard
-                  key={`${booking.venue.id}-${booking.id}-${index}`} // Use a combination to ensure uniqueness
+                  key={`${booking.id}-${index}`} // Use a combination to ensure uniqueness
                   venue={booking.venue}
                 />
               ))
             ) : (
               <p className="third-font fs-4">No bookings</p>
             )}
-          </ul>
+          </MyCarousel>
         </div>
       </div>
     </>
