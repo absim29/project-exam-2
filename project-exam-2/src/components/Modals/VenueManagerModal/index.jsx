@@ -24,7 +24,7 @@ function VenueManagerModal({ show, handleClose, user }) {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title className="first-font">BECOME VENUE MANAGER</Modal.Title>
+        <Modal.Title className="first-font">Become a venue manager</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
@@ -36,12 +36,17 @@ function VenueManagerModal({ show, handleClose, user }) {
               onChange={(e) =>
                 setUserData({ ...userData, venueManager: e.target.checked })
               }
+              className="fs-5"
             />
+            <p className="fst-italic">
+              By registering, you agree to our Terms of Service and Privacy
+              Policy.
+            </p>
           </Form.Group>
 
           <MyButton
             type="submit"
-            label={loading ? "Registering..." : "REGISTER"}
+            label={loading ? "Registering..." : "Register"}
           />
 
           {error && <p style={{ color: "red" }}>{error}</p>}
