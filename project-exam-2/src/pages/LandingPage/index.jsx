@@ -21,7 +21,7 @@ function LandingPage() {
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
         >
           <h1 className="text-uppercase first-font">Escape the ordinary</h1>
         </motion.div>
