@@ -181,15 +181,17 @@ function VenuePage({ venue }) {
         <h4 className="second-font fs-1 mt-4">Bookings</h4>
         {bookings.length > 0 ? (
           <ul className="third-font fs-5">
-            {bookings.map((booking) => (
-              <li key={booking.id} className="booking-period">
-                {`${new Date(
-                  booking.dateFrom
-                ).toLocaleDateString()} - ${new Date(
-                  booking.dateTo
-                ).toLocaleDateString()}`}
-              </li>
-            ))}
+            {bookings
+              .sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom)) // Sort by dateFrom
+              .map((booking) => (
+                <li key={booking.id}>
+                  {`${new Date(
+                    booking.dateFrom
+                  ).toLocaleDateString()} - ${new Date(
+                    booking.dateTo
+                  ).toLocaleDateString()}`}
+                </li>
+              ))}
           </ul>
         ) : (
           <p className="third-font fs-5">No bookings at this time.</p>
