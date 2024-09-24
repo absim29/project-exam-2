@@ -37,7 +37,6 @@ function useGetProfile(apiUrl) {
       const accessToken = localStorage.getItem("accessToken");
 
       try {
-        console.log("Fetching data from URL:", url);
         const response = await fetch(url, {
           method: "GET",
           headers: {
