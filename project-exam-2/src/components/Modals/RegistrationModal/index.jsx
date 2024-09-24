@@ -4,19 +4,19 @@ import Modal from "react-bootstrap/Modal";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { BASE_API, REGISTER_API } from "../../../constants/apiUrl";
-import useAuthForm from "../../../hooks/useAuthForm";
+// import { BASE_API, REGISTER_API } from "../../../constants/apiUrl";
+import useRegistrationForm from "../../../hooks/useRegistrationForm";
 import { validateForm } from "../../../functions/FormValidation";
 import MyButton from "../../Button";
 
-const url = BASE_API + REGISTER_API;
+// const url = BASE_API + REGISTER_API;
 
-function RegistrationModal({ show, handleClose }) {
+function RegistrationModal({ show, handleClose, handleOpenLogin }) {
   const initialState = {
     name: "",
     email: "",
     password: "",
-    // avatar: { url: "" },
+    avatar: { url: "" },
     bio: "",
     venueManager: false,
   };
@@ -27,14 +27,7 @@ function RegistrationModal({ show, handleClose }) {
     error,
     validationErrors,
     handleSubmit,
-  } = useAuthForm(initialState, validateForm, url, handleClose);
-
-  // const handleAvatarChange = (e) => {
-  //   setUserData((prevData) => ({
-  //     ...prevData,
-  //     avatar: { url: e.target.value }, // Ensure avatar is an object with url property
-  //   }));
-  // };
+  } = useRegistrationForm(initialState, validateForm, handleOpenLogin);
 
   return (
     <Modal show={show} onHide={handleClose} centered>
@@ -85,19 +78,23 @@ function RegistrationModal({ show, handleClose }) {
               <p style={{ color: "red" }}>{validationErrors.password}</p>
             )}
           </Form.Group>
-          {/* <Form.Group className="mb-3" controlId="formBasicAvatar">
+          <Form.Group className="mb-3" controlId="formBasicAvatarUrl">
             <Form.Label>AVATAR</Form.Label>
             <Form.Control
               type="url"
-              name="avatarUrl"
-              placeholder="optional"
+              placeholder="Paste your URL here"
               value={userData.avatar.url}
-              onChange={handleAvatarChange}
+              onChange={(e) =>
+                setUserData({
+                  ...userData,
+                  avatar: { ...userData.avatar, url: e.target.value },
+                })
+              }
             />
-            {validationErrors.avatar && (
-              <p style={{ color: "red" }}>{validationErrors.avatar}</p>
+            {validationErrors.avatarUrl && (
+              <p style={{ color: "red" }}>{validationErrors.avatarUrl}</p>
             )}
-          </Form.Group> */}
+          </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicBio">
             <Form.Label>BIO</Form.Label>
             <Form.Control
