@@ -11,7 +11,7 @@ const url = BASE_API + VENUES_API;
 function SingleVenue() {
   let { id } = useParams();
   const { data, isError, isLoading } = useFetchSingle(url, id);
-  console.log(data);
+  // console.log(data);
 
   return (
     <Layout>
