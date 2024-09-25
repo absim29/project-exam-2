@@ -15,15 +15,23 @@
   background-color: #F0F2EF !important;
 }
 
+/*Header*/
 .dropdown-menu,
 footer {
   background-color: #80A3AB !important;
   color: black !important;
 }
 
-.dropdown-item.active {
-  background: none !important;
+.dropdown-item {
+  background-color: transparent !important;
   color: black !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item.active,
+.venues-link:hover,
+.venues-link.active {
+  background: radial-gradient(circle, rgba(236, 203, 153, 1) 0%, rgba(236, 203, 153, 0) 80%) !important;
 }
 
 .dropdown-menu.show {
@@ -40,6 +48,7 @@ footer {
   width: 23.667em !important;
 }
 
+/*Button*/
 .custom-color {
   background-color: #ECCB99 !important;
   transition: background-color 0.3s, border-color 0.3s;

@@ -50,7 +50,10 @@ function Header() {
         <div style={headerBackground} className="w-100">
           <Logo />
           <ul className="d-flex justify-content-end align-items-center gap-3 pt-3 px-2">
-            <NavLink to="/venues" className="text-decoration-none text-black">
+            <NavLink
+              to="/venues"
+              className="text-decoration-none text-black fs-5 venues-link"
+            >
               Venues
             </NavLink>{" "}
             {avatarUrl ? (
@@ -64,8 +67,8 @@ function Header() {
                         src={avatarUrl || UserImage}
                         alt={username || "User"}
                         style={{
-                          width: "30px",
-                          height: "30px",
+                          width: "35px",
+                          height: "35px",
                           objectFit: "cover",
                           borderRadius: "50%",
                         }}
@@ -73,11 +76,19 @@ function Header() {
                     </span>
                   }
                 >
-                  <NavDropdown.Item as={NavLink} to="/profile">
+                  <NavDropdown.Item
+                    as={NavLink}
+                    to="/profile"
+                    className="text-decoration-none text-black fs-5"
+                  >
                     My Profile
                   </NavDropdown.Item>
 
-                  <NavDropdown.Item as={NavLink} onClick={signOut}>
+                  <NavDropdown.Item
+                    as="button"
+                    onClick={signOut}
+                    className="text-decoration-none text-black fs-5"
+                  >
                     Sign Out
                   </NavDropdown.Item>
                 </NavDropdown>
@@ -101,14 +112,14 @@ function Header() {
                 >
                   <NavDropdown.Item
                     onClick={handleShowLogin}
-                    className="text-decoration-none text-black"
+                    className="text-decoration-none text-black fs-5"
                   >
                     Login
                   </NavDropdown.Item>
 
                   <NavDropdown.Item
                     onClick={handleShowRegistration}
-                    className="text-decoration-none text-black"
+                    className="text-decoration-none text-black fs-5"
                   >
                     Register
                   </NavDropdown.Item>
