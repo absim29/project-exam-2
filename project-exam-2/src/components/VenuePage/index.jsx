@@ -78,14 +78,10 @@ function VenuePage({ venue }) {
 
   return (
     <>
-      <div className="d-flex flex-column mt-0 col-8">
+      <div className="d-flex flex-column mt-0 col-md-8 col-11 mx-3">
         <h2 className="first-font fs-2 mt-2">{name}</h2>
-        {/* <img
-          src={media.length > 0 && media[0].url ? media[0].url : VenueImage}
-          alt={media.length > 0 && media[0].alt ? media[0].alt : name}
-          className="w-100 rounded-4 shadow mb-2"
-        /> */}
-        <div className="row">
+
+        <div className="row col-12 mx-auto">
           {/* First image taking half of the container */}
           {media.length > 0 ? (
             <>
@@ -99,7 +95,15 @@ function VenuePage({ venue }) {
                     src={media[0].url}
                     alt={media[0].alt || name}
                     className="w-100 rounded-4 shadow"
-                    style={{ height: "auto", maxHeight: "400px" }} // Adjust maxHeight as needed
+                    style={{
+                      height: "308px",
+                      maxHeight: "400px",
+                      objectFit: "cover",
+                    }} // Adjust maxHeight as needed
+                    onError={(e) => {
+                      e.target.onerror = null; // Prevent infinite loop
+                      e.target.src = VenueImage; // Fallback image
+                    }}
                   />
                 </a>
               </div>
@@ -115,7 +119,15 @@ function VenuePage({ venue }) {
                         src={image.url}
                         alt={image.alt || name}
                         className="w-100 rounded-4 shadow"
-                        style={{ height: "auto", maxHeight: "150px" }} // Adjust maxHeight as needed
+                        style={{
+                          height: "150px",
+                          maxHeight: "200px",
+                          objectFit: "cover",
+                        }} // Adjust maxHeight as needed
+                        onError={(e) => {
+                          e.target.onerror = null; // Prevent infinite loop
+                          e.target.src = VenueImage; // Fallback image
+                        }}
                       />
                     </a>
                   </div>
@@ -126,13 +138,13 @@ function VenuePage({ venue }) {
             <img
               src={VenueImage}
               alt={name}
-              className="w-100 rounded-4 shadow mb-2"
+              className="w-100 rounded-4 shadow mb-2 p-0"
             />
           )}
         </div>
 
         <div className="d-flex mt-4 justify-content-between flex-wrap">
-          <div className="w-50">
+          <div className="col-md-6 col-12">
             <h3 className="first-font fs-5">
               {locationString || "Location Unavailable"}
             </h3>
@@ -148,7 +160,7 @@ function VenuePage({ venue }) {
             <h4 className="second-font fs-1 mt-5">Description</h4>
             <p className="third-font fs-5">{description}</p>
           </div>
-          <div>
+          <div className="col-md-6 col-12 m-auto d-flex flex-column align-items-center">
             <Calendar
               bookings={bookings}
               maxGuests={maxGuests}
@@ -157,8 +169,8 @@ function VenuePage({ venue }) {
             />
           </div>
         </div>
-        <h4 className="second-font fs-1 mb-4">Amenities</h4>
-        <ul className="third-font d-flex flex-wrap justify-content-evenly fs-5">
+        <h4 className="second-font fs-1 my-4">Amenities</h4>
+        <ul className="third-font d-flex flex-wrap justify-content-start gap-3 fs-5">
           <div className="d-flex">
             <WifiIcon fontSize="large" />
             <p>{amenities.wifi ? "Free Wi-Fi" : "No Wi-Fi"}</p>
@@ -200,8 +212,8 @@ function VenuePage({ venue }) {
           <h4 className="second-font fs-2 mt-4">Host</h4>
 
           <div
-            className="d-flex justify-content-evenly align-items-center bg-white w-50 p-2 mb-3 rounded shadow-sm"
-            style={{ maxWidth: "300px", minWidth: "200px" }}
+            className="d-flex justify-content-evenly align-items-center gap-2 bg-white w-50 p-2 mb-3 rounded shadow-sm"
+            style={{ maxWidth: "300px", minWidth: "min-content" }}
           >
             <img
               src={
@@ -219,14 +231,14 @@ function VenuePage({ venue }) {
 
         {/* Conditional rendering if the logged-in user is the owner */}
         {isOwner && (
-          <div className="d-flex mx-auto gap-5 my-5">
-            <MyButton onClick={handleShowEditVenue} label="Edit Venue" />
+          <div className="d-flex justify-content-center gap-3 my-5">
+            <MyButton onClick={handleShowEditVenue} label="Edit" />
             <EditVenueModal
               show={showEditModal}
               handleClose={handleCloseEditVenue}
               venue={venue}
             />
-            <MyButton onClick={handleShowDeleteVenue} label="Delete Venue" />
+            <MyButton onClick={handleShowDeleteVenue} label="Delete" />
             <DeleteVenueModal
               show={showDeleteModal}
               handleClose={handleCloseDeleteVenue}
