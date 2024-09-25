@@ -30,7 +30,7 @@ function Profile({ user }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="col-sm-11 col-md-7 col-3 d-flex flex-row flex-wrap flex-md-nowrap justify-content-center bg-white p-3 m-5 rounded gap-5 shadow"
+        className="col-sm-11 col-md-8 col-3 d-flex flex-row flex-wrap flex-md-nowrap justify-content-center bg-white p-3 m-5 rounded gap-5 shadow"
         style={{ maxWidth: "500px", minWidth: "300px" }}
       >
         <img
@@ -79,16 +79,15 @@ function Profile({ user }) {
           <h4 className="second-font fs-1">Hosted Venues</h4>
           {venueManager ? (
             <>
-              <MyCarousel>
-                {venues.length > 0 ? (
-                  venues.map((venue) => (
+              {venues.length > 0 ? (
+                <MyCarousel>
+                  {venues.map((venue) => (
                     <VenueCard key={venue.id} venue={venue} />
-                  ))
-                ) : (
-                  <p className="third-font fs-4">No venues</p>
-                )}
-              </MyCarousel>
-
+                  ))}
+                </MyCarousel>
+              ) : (
+                <p className="third-font fs-4">No venues</p>
+              )}
               <MyButton label="New Venue" onClick={handleShowAddVenue} />
               <AddVenueModal
                 show={showAddVenueModal}
@@ -102,7 +101,6 @@ function Profile({ user }) {
                 label="Register as manager"
                 onClick={handleShowVenueManager}
               />
-
               <VenueManagerModal
                 show={showVenueManagerModal}
                 handleClose={handleCloseVenueManager}
