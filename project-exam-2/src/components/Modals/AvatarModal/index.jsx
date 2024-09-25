@@ -27,7 +27,7 @@ function AvatarModal({ show, handleClose, user }) {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title className="first-font">EDIT PROFILE</Modal.Title>
+        <Modal.Title className="first-font">Edit Profile</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
@@ -61,9 +61,12 @@ function AvatarModal({ show, handleClose, user }) {
               <p style={{ color: "red" }}>{validationErrors.avatarUrl}</p>
             )}
           </Form.Group>
-
-          <MyButton type="submit" label={loading ? "Updating..." : "UPDATE"} />
-
+          <div className="d-flex justify-content-center">
+            <MyButton
+              type="submit"
+              label={loading ? "Updating..." : "Update Profile"}
+            />
+          </div>
           {error && <p style={{ color: "red" }}>{error}</p>}
         </Form>
       </Modal.Body>

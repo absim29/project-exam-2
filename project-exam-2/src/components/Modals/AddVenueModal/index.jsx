@@ -46,10 +46,31 @@ function AddVenueModal({ show, handleClose }) {
     handleSubmit,
   } = useUpdate(initialState, validateAddVenue, url, "POST", handleClose);
 
+  // Function to handle media input change
+  const handleMediaChange = (index, e) => {
+    const newMedia = [...userData.media];
+    newMedia[index].url = e.target.value;
+    setUserData({ ...userData, media: newMedia });
+  };
+
+  // Function to add a new media input field
+  const addMediaField = () => {
+    setUserData({
+      ...userData,
+      media: [...userData.media, { url: "" }],
+    });
+  };
+
+  // Function to remove a media input field
+  const removeMediaField = (index) => {
+    const newMedia = userData.media.filter((_, i) => i !== index);
+    setUserData({ ...userData, media: newMedia });
+  };
+
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title className="first-font">NEW VENUE</Modal.Title>
+        <Modal.Title className="first-font">Add a new venue</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
@@ -57,7 +78,7 @@ function AddVenueModal({ show, handleClose }) {
             <Form.Label>NAME</Form.Label>
             <Form.Control
               type="text"
-              placeholder="required"
+              placeholder="Venue name"
               value={userData.name || ""}
               onChange={(e) =>
                 setUserData({ ...userData, name: e.target.value })
@@ -73,7 +94,7 @@ function AddVenueModal({ show, handleClose }) {
             <Form.Control
               as="textarea"
               rows={3}
-              placeholder="required"
+              placeholder="Venue description"
               value={userData.description || ""}
               onChange={(e) =>
                 setUserData({ ...userData, description: e.target.value })
@@ -86,41 +107,37 @@ function AddVenueModal({ show, handleClose }) {
 
           <Form.Group className="mb-3" controlId="formBasicMediaUrl">
             <Form.Label>MEDIA</Form.Label>
-            <Form.Control
-              type="url"
-              placeholder="Paste your URL here"
-              value={userData.media[0]?.url || ""}
-              onChange={(e) => {
-                const newMedia = [...userData.media];
-                newMedia[0] = { ...newMedia[0], url: e.target.value };
-                setUserData({ ...userData, media: newMedia });
-              }}
-            />
-            {validationErrors.mediaUrl && (
-              <p style={{ color: "red" }}>{validationErrors.mediaUrl}</p>
-            )}
+            {userData.media.map((mediaItem, index) => (
+              <div key={index} className="mb-2">
+                <Form.Control
+                  type="url"
+                  placeholder={`Image URL ${index + 1}`}
+                  value={mediaItem.url}
+                  onChange={(e) => handleMediaChange(index, e)}
+                />
+                {validationErrors[`mediaUrl${index}`] && (
+                  <p style={{ color: "red" }}>
+                    {validationErrors[`mediaUrl${index}`]}
+                  </p>
+                )}
+                {/* Show remove button if there's more than one media */}
+                {userData.media.length > 1 && (
+                  <MyButton
+                    type="button"
+                    label="Remove"
+                    onClick={() => removeMediaField(index)}
+                  />
+                )}
+              </div>
+            ))}
+            <MyButton type="button" label="Add Image" onClick={addMediaField} />
           </Form.Group>
-
-          {/* <Form.Group className="mb-3" controlId="formBasicMediaAlt">
-            <Form.Label>MEDIA ALT TEXT</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="optional"
-              value={userData.media.alt}
-              onChange={(e) =>
-                setUserData({
-                  ...userData,
-                  media: { ...userData.media, alt: e.target.value },
-                })
-              }
-            />
-          </Form.Group> */}
 
           <Form.Group className="mb-3" controlId="formBasicPrice">
             <Form.Label>PRICE</Form.Label>
             <Form.Control
               type="number"
-              placeholder="required"
+              placeholder="Price"
               value={userData.price || ""}
               onChange={(e) => {
                 const value = parseFloat(e.target.value);
@@ -137,7 +154,7 @@ function AddVenueModal({ show, handleClose }) {
             <Form.Label>MAX GUESTS</Form.Label>
             <Form.Control
               type="number"
-              placeholder="required"
+              placeholder="Maximum guests"
               value={userData.maxGuests || ""}
               onChange={(e) => {
                 const value = parseInt(e.target.value, 10);
@@ -211,7 +228,7 @@ function AddVenueModal({ show, handleClose }) {
             <Form.Label>ADDRESS</Form.Label>
             <Form.Control
               type="text"
-              placeholder="optional"
+              placeholder="Street no."
               value={userData.location.address || ""}
               onChange={(e) =>
                 setUserData({
@@ -226,7 +243,7 @@ function AddVenueModal({ show, handleClose }) {
             <Form.Label>CITY</Form.Label>
             <Form.Control
               type="text"
-              placeholder="optional"
+              placeholder="City"
               value={userData.location.city || ""}
               onChange={(e) =>
                 setUserData({
@@ -238,10 +255,10 @@ function AddVenueModal({ show, handleClose }) {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicZip">
-            <Form.Label>ZIP</Form.Label>
+            <Form.Label>ZIP CODE</Form.Label>
             <Form.Control
               type="text"
-              placeholder="optional"
+              placeholder="Zip code"
               value={userData.location.zip || ""}
               onChange={(e) =>
                 setUserData({
@@ -256,7 +273,7 @@ function AddVenueModal({ show, handleClose }) {
             <Form.Label>COUNTRY</Form.Label>
             <Form.Control
               type="text"
-              placeholder="optional"
+              placeholder="Country"
               value={userData.location.country || ""}
               onChange={(e) =>
                 setUserData({
@@ -266,12 +283,12 @@ function AddVenueModal({ show, handleClose }) {
               }
             />
           </Form.Group>
-
-          <MyButton
-            type="submit"
-            label={loading ? "Adding venue..." : "ADD VENUE"}
-          />
-
+          <div className="d-flex justify-content-center">
+            <MyButton
+              type="submit"
+              label={loading ? "Adding venue..." : "Add Venue"}
+            />
+          </div>
           {error && <p style={{ color: "red" }}>{error}</p>}
         </Form>
       </Modal.Body>

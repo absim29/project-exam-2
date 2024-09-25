@@ -42,10 +42,31 @@ function EditVenueModal({ show, handleClose, venue }) {
     handleSubmit,
   } = useUpdate(initialState, validateAddVenue, url, "PUT", handleClose);
 
+  // Function to handle media input change
+  const handleMediaChange = (index, e) => {
+    const newMedia = [...userData.media];
+    newMedia[index].url = e.target.value;
+    setUserData({ ...userData, media: newMedia });
+  };
+
+  // Function to add a new media input field
+  const addMediaField = () => {
+    setUserData({
+      ...userData,
+      media: [...userData.media, { url: "" }],
+    });
+  };
+
+  // Function to remove a media input field
+  const removeMediaField = (index) => {
+    const newMedia = userData.media.filter((_, i) => i !== index);
+    setUserData({ ...userData, media: newMedia });
+  };
+
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title className="first-font">NEW VENUE</Modal.Title>
+        <Modal.Title className="first-font">Edit Venue</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
@@ -82,19 +103,25 @@ function EditVenueModal({ show, handleClose, venue }) {
 
           <Form.Group className="mb-3" controlId="formBasicMediaUrl">
             <Form.Label>MEDIA</Form.Label>
-            <Form.Control
-              type="url"
-              placeholder="Paste your URL here"
-              value={userData.media[0]?.url}
-              onChange={(e) => {
-                const newMedia = [...userData.media];
-                newMedia[0] = { ...newMedia[0], url: e.target.value };
-                setUserData({ ...userData, media: newMedia });
-              }}
-            />
-            {validationErrors.mediaUrl && (
-              <p style={{ color: "red" }}>{validationErrors.mediaUrl}</p>
-            )}
+            {userData.media.map((mediaItem, index) => (
+              <div key={index} className="mb-2">
+                <Form.Control
+                  type="url"
+                  placeholder={`Image URL ${index + 1}`}
+                  value={mediaItem.url}
+                  onChange={(e) => handleMediaChange(index, e)}
+                />
+                {/* Show remove button if there's more than one media */}
+                {userData.media.length > 1 && (
+                  <MyButton
+                    type="button"
+                    label="Remove"
+                    onClick={() => removeMediaField(index)}
+                  />
+                )}
+              </div>
+            ))}
+            <MyButton type="button" label="Add Image" onClick={addMediaField} />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPrice">
@@ -250,7 +277,7 @@ function EditVenueModal({ show, handleClose, venue }) {
 
           <MyButton
             type="submit"
-            label={loading ? "Update venue..." : "UPDATE VENUE"}
+            label={loading ? "Update venue..." : "Update Venue"}
           />
 
           {error && <p style={{ color: "red" }}>{error}</p>}

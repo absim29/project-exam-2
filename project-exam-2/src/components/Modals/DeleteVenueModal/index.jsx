@@ -44,15 +44,17 @@ function DeleteVenueModal({ show, handleClose, venue }) {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title className="first-font">DELETE VENUE</Modal.Title>
+        <Modal.Title className="first-font">Delete Venue</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h1>Are you sure you want to delete?</h1>
-        <p>This action cannot be undone</p>
-        <MyButton
-          onClick={handleDelete}
-          label={loading ? "Deleting..." : "DELETE VENUE"}
-        />
+        <h3>Are you sure you want to delete?</h3>
+        <p className="fst-italic">This action cannot be undone</p>
+        <div className="d-flex justify-content-center">
+          <MyButton
+            onClick={handleDelete}
+            label={loading ? "Deleting..." : "Delete Venue"}
+          />
+        </div>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </Modal.Body>
     </Modal>
