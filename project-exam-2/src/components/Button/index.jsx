@@ -7,6 +7,7 @@ function MyButton({ label, onClick, disabled, type }) {
       variant="outline-dark"
       size="lg"
       className="px-5 custom-color rounded-pill shadow-sm"
+      style={{ minWidth: "150px", maxWidth: "200px" }}
       onClick={onClick}
       disabled={disabled}
       type={type}
