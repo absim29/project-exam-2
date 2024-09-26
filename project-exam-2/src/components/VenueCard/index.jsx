@@ -3,7 +3,7 @@ import VenueImage from "../../assets/venue-card.jpg";
 import Rating from "@mui/material/Rating";
 import { Link } from "react-router-dom";
 
-function VenueCard({ venue }) {
+function VenueCard({ venue, className }) {
   // Extract relevant details from the venue data
   const { name, media, price, rating, location } = venue;
 
@@ -21,7 +21,7 @@ function VenueCard({ venue }) {
         to={`/venues/${venue.id}`}
         className="text-decoration-none text-black"
       >
-        <div className="venue-card">
+        <div className={className}>
           <img
             src={media.length > 0 && media[0].url ? media[0].url : VenueImage}
             alt={media.length > 0 && media[0].alt ? media[0].alt : name}
