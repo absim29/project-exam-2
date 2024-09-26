@@ -52,8 +52,6 @@ function useGetProfile(apiUrl) {
 
         const result = await response.json();
 
-        console.log(result);
-
         if (isMounted) {
           setData(result.data);
         }
