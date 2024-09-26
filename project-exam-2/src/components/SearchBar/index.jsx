@@ -11,6 +11,7 @@ function SearchBar({ onSearch }) {
   return (
     <div className="position-relative mb-4">
       <Form.Control
+        id="searchbar"
         type="text"
         value={input}
         placeholder="Search venues..."
