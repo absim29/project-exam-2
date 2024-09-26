@@ -61,7 +61,6 @@ function Profile({ user }) {
             user={user}
           />
         </div>
-        {/* </div> */}
       </motion.div>
       <div
         className="w-75 ml-4"
@@ -88,7 +87,9 @@ function Profile({ user }) {
               ) : (
                 <p className="third-font fs-4">No venues</p>
               )}
-              <MyButton label="New Venue" onClick={handleShowAddVenue} />
+              <div className="mt-5">
+                <MyButton label="New Venue" onClick={handleShowAddVenue} />
+              </div>
               <AddVenueModal
                 show={showAddVenueModal}
                 handleClose={handleCloseAddVenue}
@@ -110,19 +111,37 @@ function Profile({ user }) {
           )}
         </div>
         <div
-          className="d-flex flex-column align-items-center"
+          className="d-flex flex-column align-items-center my-bookings"
           style={{ width: "300px" }}
         >
           <h4 className="second-font fs-1">My Bookings</h4>
 
           {bookings.length > 0 ? (
             <MyCarousel>
-              {bookings.map((booking, index) => (
-                <VenueCard
-                  key={`${booking.id}-${index}`} // Use a combination to ensure uniqueness
-                  venue={booking.venue}
-                />
-              ))}
+              {bookings.map((booking, index) => {
+                // Format the dates for display
+                const formattedDateFrom = new Date(
+                  booking.dateFrom
+                ).toLocaleDateString();
+                const formattedDateTo = new Date(
+                  booking.dateTo
+                ).toLocaleDateString();
+
+                return (
+                  <div key={`${booking.id}-${index}`}>
+                    <VenueCard
+                      venue={booking.venue}
+                      className="venue-card-profile"
+                    />
+                    <p className="mb-0 mx-3">
+                      <strong>From:</strong> {formattedDateFrom}
+                    </p>
+                    <p className="mb-0 mx-3">
+                      <strong>To:</strong> {formattedDateTo}
+                    </p>
+                  </div>
+                );
+              })}
             </MyCarousel>
           ) : (
             <p className="third-font fs-4">No bookings</p>
