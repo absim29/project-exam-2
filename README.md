@@ -53,6 +53,13 @@ Open your browser and go to http://localhost:3000 (or whichever port your app is
 
 - **React**: Frontend library for building the UI.
 - **Bootstrap**: For responsive design and styling.
+- **Material-UI**:
+  - **@mui/material**: ^6.0.2 — React components for faster and easier web development.
+  - **@mui/icons-material**: ^6.0.2 — Icon library for Material-UI.
+  - **@mui/x-date-pickers**: ^7.16.0 — Date and time pickers for Material-UI.
+- **Framer Motion**: ^11.5.6 — Animation library for React.
+- **React Calendar**: ^5.0.0 — A flexible calendar component for React.
+- **GLightbox**: ^3.3.0 — A lightbox gallery for images and videos.
 - **Custom Hooks**: (e.g., useUpdate) for managing API interactions.
 - **React-Bootstrap**: For UI components such as modal forms.
 - **API**: Integrated with a backend API using fetch for data handling.
