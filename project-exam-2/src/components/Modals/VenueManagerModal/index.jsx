@@ -43,12 +43,12 @@ function VenueManagerModal({ show, handleClose, user }) {
               Policy.
             </p>
           </Form.Group>
-
-          <MyButton
-            type="submit"
-            label={loading ? "Registering..." : "Register"}
-          />
-
+          <div className="d-flex justify-content-center">
+            <MyButton
+              type="submit"
+              label={loading ? "Registering..." : "Register"}
+            />
+          </div>
           {error && <p style={{ color: "red" }}>{error}</p>}
         </Form>
       </Modal.Body>
