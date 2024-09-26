@@ -81,7 +81,7 @@ function Venues() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                   >
-                    <VenueCard venue={venue} />
+                    <VenueCard venue={venue} className="venue-card" />
                   </motion.div>
                 ))}
               </div>
