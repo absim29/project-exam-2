@@ -29,11 +29,23 @@ function useUpdate(initialState, validateForm, url, method = "PUT") {
       });
 
       const update = await response.json();
-      console.log(update);
+
       if (!response.ok) {
         throw new Error(
           update.message || "Submission failed. Please try again."
         );
+      }
+
+      const storedAvatarUrl = localStorage.getItem("avatarUrl");
+
+      // Access avatar data from the nested `data.avatar` object
+      const newAvatarUrl = update?.data?.avatar?.url;
+
+      if (newAvatarUrl) {
+        // Update the avatar in localStorage
+        if (storedAvatarUrl !== newAvatarUrl) {
+          localStorage.setItem("avatarUrl", newAvatarUrl);
+        }
       }
 
       window.location.reload();
