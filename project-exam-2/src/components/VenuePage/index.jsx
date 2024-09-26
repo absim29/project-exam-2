@@ -196,13 +196,15 @@ function VenuePage({ venue }) {
             {bookings
               .sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom)) // Sort by dateFrom
               .map((booking) => (
-                <li key={booking.id}>
+                <p key={booking.id}>
+                  <strong>{booking.customer.name}</strong> : {booking.guests}{" "}
+                  guests{", "}
                   {`${new Date(
                     booking.dateFrom
                   ).toLocaleDateString()} - ${new Date(
                     booking.dateTo
                   ).toLocaleDateString()}`}
-                </li>
+                </p>
               ))}
           </ul>
         ) : (
