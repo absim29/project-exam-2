@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import VenueImage from "../../assets/venue-card.jpg";
+import Map from "../../assets/map.jpg";
 import ProfileImage from "../../assets/user-image.jpg";
 import Rating from "@mui/material/Rating";
 import Calendar from "../Calendar";
@@ -78,13 +79,14 @@ function VenuePage({ venue }) {
 
   return (
     <>
-      <div className="d-flex flex-column mt-0 col-md-8 col-11 mx-3">
-        <h2 className="first-font fs-2 mt-2">{name}</h2>
+      <div className="d-flex flex-column mt-0 col-md-9 col-lg-8 col-11 mx-3">
+        <h2 className="first-font fs-2 my-4">{name}</h2>
 
         <div className="row col-12 mx-auto">
-          {/* First image taking half of the container */}
+          {/* Check if there are media files available */}
           {media.length > 0 ? (
             <>
+              {/* Big image on the left */}
               <div className="col-12 col-md-6 mb-2 px-1">
                 <a
                   href={media[0].url}
@@ -99,7 +101,7 @@ function VenuePage({ venue }) {
                       height: "308px",
                       maxHeight: "400px",
                       objectFit: "cover",
-                    }} // Adjust maxHeight as needed
+                    }}
                     onError={(e) => {
                       e.target.onerror = null; // Prevent infinite loop
                       e.target.src = VenueImage; // Fallback image
@@ -107,9 +109,14 @@ function VenuePage({ venue }) {
                   />
                 </a>
               </div>
+
+              {/* Right side with smaller images */}
               <div className="col-12 col-md-6 d-flex flex-wrap px-1">
-                {media.slice(1).map((image, index) => (
-                  <div key={index} className="col-6 mb-2 px-1">
+                {media.slice(1, 5).map((image, index) => (
+                  <div
+                    key={index}
+                    className="col-6 mb-2 px-1 position-relative"
+                  >
                     <a
                       href={image.url}
                       className="glightbox"
@@ -123,16 +130,44 @@ function VenuePage({ venue }) {
                           height: "150px",
                           maxHeight: "200px",
                           objectFit: "cover",
-                        }} // Adjust maxHeight as needed
+                        }}
                         onError={(e) => {
-                          e.target.onerror = null; // Prevent infinite loop
-                          e.target.src = VenueImage; // Fallback image
+                          e.target.onerror = null;
+                          e.target.src = VenueImage;
                         }}
                       />
                     </a>
+                    {/* Overlay +X on the last image if there are more than 5 */}
+                    {index === 3 && media.length > 5 && (
+                      <div
+                        className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+                        style={{
+                          backgroundColor: "rgba(0, 0, 0, 0.5)",
+                          color: "white",
+                          fontSize: "24px",
+                          fontWeight: "bold",
+                          borderRadius: "0.5rem",
+                        }}
+                      >
+                        +{media.length - 5}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
+
+              {/* Hidden anchors for extra images to be accessible in glightbox */}
+              {media.slice(5).map((image, index) => (
+                <a
+                  key={`hidden-${index}`}
+                  href={image.url}
+                  className="glightbox"
+                  data-glightbox="type: image"
+                  style={{ display: "none" }}
+                >
+                  {/* No need to render an img here since it's hidden */}
+                </a>
+              ))}
             </>
           ) : (
             <img
@@ -144,7 +179,7 @@ function VenuePage({ venue }) {
         </div>
 
         <div className="d-flex mt-4 justify-content-between flex-wrap">
-          <div className="col-md-6 col-12">
+          <div className="col-lg-7 col-md-6 col-12">
             <h3 className="first-font fs-5">
               {locationString || "Location Unavailable"}
             </h3>
@@ -160,7 +195,7 @@ function VenuePage({ venue }) {
             <h4 className="second-font fs-1 mt-5">Description</h4>
             <p className="third-font fs-5">{description}</p>
           </div>
-          <div className="col-md-6 col-12 m-auto d-flex flex-column align-items-center">
+          <div className="col-lg-5 col-md-6 col-12 m-auto d-flex flex-column align-items-center">
             <Calendar
               bookings={bookings}
               maxGuests={maxGuests}
@@ -189,22 +224,53 @@ function VenuePage({ venue }) {
           </div>
         </ul>
         <h4 className="second-font fs-1 mt-4">Location</h4>
-        <p className="third-font fs-5">{locationString}</p>
+        <div className="d-flex flex-wrap justify-content-between gap-3 col-11">
+          <p
+            className="third-font fs-5"
+            // style={{ marginLeft: 0, marginRight: "auto" }}
+          >
+            {locationString}
+          </p>
+          <a
+            href="https://www.google.com/maps"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={Map}
+              alt="location of venue"
+              style={{ width: "300px" }}
+              className="rounded"
+            />
+          </a>
+        </div>
         <h4 className="second-font fs-1 mt-4">Bookings</h4>
         {bookings.length > 0 ? (
           <ul className="third-font fs-5">
             {bookings
               .sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom)) // Sort by dateFrom
               .map((booking) => (
-                <p key={booking.id}>
-                  <strong>{booking.customer.name}</strong> : {booking.guests}{" "}
-                  guests{", "}
-                  {`${new Date(
-                    booking.dateFrom
-                  ).toLocaleDateString()} - ${new Date(
-                    booking.dateTo
-                  ).toLocaleDateString()}`}
-                </p>
+                <div key={booking.id}>
+                  {isOwner ? (
+                    <p>
+                      <strong>{booking.customer.name}</strong> :{" "}
+                      {booking.guests} guests{", "}
+                      {`${new Date(
+                        booking.dateFrom
+                      ).toLocaleDateString()} - ${new Date(
+                        booking.dateTo
+                      ).toLocaleDateString()}`}
+                    </p>
+                  ) : (
+                    <p>
+                      {`${new Date(
+                        booking.dateFrom
+                      ).toLocaleDateString()} - ${new Date(
+                        booking.dateTo
+                      ).toLocaleDateString()}`}
+                    </p>
+                  )}
+                </div>
               ))}
           </ul>
         ) : (
