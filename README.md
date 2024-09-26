@@ -1,4 +1,4 @@
-# Project Exam 2
+# Project Exam 2 - Holidaze
 
 **Holidaze** is a newly launched accommodation booking platform seeking a modern front-end solution to enhance user experience. This project focuses on developing a responsive and intuitive front-end application using the provided official API documentation.
 
