@@ -31,7 +31,7 @@ function ProfilePage() {
   return (
     <Layout>
       {isLoading ? (
-        <Box sx={{ width: "50%" }}>
+        <Box sx={{ width: "50%" }} className="mx-auto mt-5">
           <LinearProgress />
         </Box>
       ) : isError ? (
