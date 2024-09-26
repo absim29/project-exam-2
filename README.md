@@ -25,7 +25,7 @@ git clone https://github.com/absim29/project-exam-2.git
 ### Navigate to the project directory:
 
 ```bash
-cd project-exam-2´´´
+cd project-exam-2
 ```
 
 ### Install dependencies:
@@ -55,7 +55,7 @@ Open your browser and go to http://localhost:3000 (or whichever port your app is
 
 ## API Documentation
 
-The API you are using for this project can be found under Holidaze in the Noroff API documentation.
+The API you are using for this project can be found under Holidaze in the [Noroff API documentation](https://docs.noroff.dev/docs/v2/).
 
 ## User Stories
 
