@@ -274,12 +274,12 @@ function EditVenueModal({ show, handleClose, venue }) {
               }
             />
           </Form.Group>
-
-          <MyButton
-            type="submit"
-            label={loading ? "Update venue..." : "Update Venue"}
-          />
-
+          <div className="d-flex justify-content-center">
+            <MyButton
+              type="submit"
+              label={loading ? "Update venue..." : "Update Venue"}
+            />
+          </div>
           {error && <p style={{ color: "red" }}>{error}</p>}
         </Form>
       </Modal.Body>
