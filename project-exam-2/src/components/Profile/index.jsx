@@ -81,7 +81,11 @@ function Profile({ user }) {
               {venues.length > 0 ? (
                 <MyCarousel>
                   {venues.map((venue) => (
-                    <VenueCard key={venue.id} venue={venue} />
+                    <VenueCard
+                      key={venue.id}
+                      venue={venue}
+                      className="venue-card-profile"
+                    />
                   ))}
                 </MyCarousel>
               ) : (
@@ -111,7 +115,7 @@ function Profile({ user }) {
           )}
         </div>
         <div
-          className="d-flex flex-column align-items-center my-bookings"
+          className="d-flex flex-column align-items-center my-bookings mb-5"
           style={{ width: "300px" }}
         >
           <h4 className="second-font fs-1">My Bookings</h4>
