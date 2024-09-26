@@ -1,8 +1,13 @@
 # Project Exam 2
 
-An accommodation booking site called Holidaze. All API functionality is managed by an existing application. This project only covers the front-end application for the API.
+**Holidaze** is a newly launched accommodation booking platform seeking a modern front-end solution to enhance user experience. This project focuses on developing a responsive and intuitive front-end application using the provided official API documentation.
 
-There are two aspects to this brief: the customer-facing side of the website where users can book holidays at a venue, and an admin-facing side of the website where users can register and manage venues and bookings at those venues.
+The application encompasses two main components:
+
+- **Customer-Facing Interface:** Users can browse, search for and book accommodations at various venues.
+- **Admin Dashboard:** Venue managers can register, manage venue details, and view the venue bookings.
+
+While the project adheres to specific API functionalities, the design and overall user experience are left to the developer's discretion, allowing for creative flexibility in crafting a user-friendly application.
 
 ## Table of Contents
 
