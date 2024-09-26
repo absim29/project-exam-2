@@ -1,4 +1,4 @@
-# project-exam-2
+# Project Exam 2
 
 An accommodation booking site called Holidaze. All API functionality is managed by an existing application. This project only covers the front-end application for the API.
 
