@@ -47,14 +47,19 @@ function Calendar({ bookings = [], maxGuests, venueId, isOwner }) {
       setError(`Must be at least 1 guest.`);
       return;
     }
+
+    // Check if the start date and end date are valid
+    if (!date.startDate || !date.endDate || date.startDate >= date.endDate) {
+      setError("Please select a valid date range.");
+      return;
+    }
+
     const bookingData = {
       dateFrom: date.startDate.toISOString(),
       dateTo: date.endDate.toISOString(),
       guests,
       venueId,
     };
-
-    console.log("Booking data:", bookingData);
 
     try {
       const data = await BookingRequest(bookingData); // Call the API function
@@ -87,8 +92,9 @@ function Calendar({ bookings = [], maxGuests, venueId, isOwner }) {
       {!isOwner && (
         <div className="d-flex flex-column gap-3 align-items-center mt-4 mb-4">
           <div>
-            <label>Number of Guests: </label>
+            <label htmlFor="guestno">Number of Guests: </label>
             <input
+              id="guestno"
               type="number"
               value={guests}
               min={1}
