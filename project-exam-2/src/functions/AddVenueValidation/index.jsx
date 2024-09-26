@@ -27,11 +27,15 @@ export const validateAddVenue = (userData, setValidationErrors) => {
   // Price validation
   if (!userData.price) {
     errors.price = "Price is required.";
+  } else if (userData.price > 10000) {
+    errors.price = "Price cannot be greater than 10,000.";
   }
 
   // Max Guests validation
   if (!userData.maxGuests) {
     errors.maxGuests = "Max guests is required.";
+  } else if (userData.maxGuests > 100) {
+    errors.maxGuests = "A venue cannot accommodate more than 100 guests.";
   }
 
   setValidationErrors(errors);

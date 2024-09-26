@@ -115,10 +115,8 @@ function AddVenueModal({ show, handleClose }) {
                   value={mediaItem.url}
                   onChange={(e) => handleMediaChange(index, e)}
                 />
-                {validationErrors[`mediaUrl${index}`] && (
-                  <p style={{ color: "red" }}>
-                    {validationErrors[`mediaUrl${index}`]}
-                  </p>
+                {validationErrors.mediaUrl && (
+                  <p style={{ color: "red" }}>{validationErrors.mediaUrl}</p>
                 )}
                 {/* Show remove button if there's more than one media */}
                 {userData.media.length > 1 && (
@@ -141,9 +139,15 @@ function AddVenueModal({ show, handleClose }) {
               value={userData.price || ""}
               onChange={(e) => {
                 const value = parseFloat(e.target.value);
-                setUserData({ ...userData, price: isNaN(value) ? "" : value });
+                if (value <= 10000) {
+                  setUserData({
+                    ...userData,
+                    price: isNaN(value) ? "" : value,
+                  });
+                }
               }}
               min="0"
+              max="10000"
             />
             {validationErrors.price && (
               <p style={{ color: "red" }}>{validationErrors.price}</p>
@@ -158,10 +162,12 @@ function AddVenueModal({ show, handleClose }) {
               value={userData.maxGuests || ""}
               onChange={(e) => {
                 const value = parseInt(e.target.value, 10);
-                setUserData({
-                  ...userData,
-                  maxGuests: isNaN(value) ? "" : value,
-                });
+                if (value <= 100) {
+                  setUserData({
+                    ...userData,
+                    maxGuests: isNaN(value) ? "" : value,
+                  });
+                }
               }}
               min="0"
             />
