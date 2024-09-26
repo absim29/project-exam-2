@@ -4,10 +4,26 @@
   height: 400px;
 }
 
+.venue-card-profile {
+  width: 100%;
+  height: auto;
+  padding: 0 10px 0 10px;
+}
+
 .card-image {
   width: 100%;
   height: 220px;
   object-fit: cover;
+}
+
+.carousel-indicators {
+  margin-bottom: 0 !important;
+  bottom: -20px !important;
+}
+
+.my-bookings .carousel-control-next,
+.my-bookings .carousel-control-prev {
+  bottom: 48px !important;
 }
 
 /*Forms*/
