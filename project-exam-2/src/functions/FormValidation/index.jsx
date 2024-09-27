@@ -23,27 +23,26 @@ export const validateForm = (userData, setValidationErrors) => {
     errors.bio = "Bio must be less than 160 characters.";
   }
 
-  // // Avatar validation
-  // if (userData.avatar) {
-  //   // Check if avatar is an object with a URL
-  //   if (typeof userData.avatar !== "object" || !userData.avatar.url) {
-  //     errors.avatar = "Avatar must be an object with a URL.";
-  //   } else {
-  //     // Validate URL
-  //     try {
-  //       new URL(userData.avatar.url);
-  //     } catch (_) {
-  //       errors.avatarUrl = "Avatar URL must be a valid URL.";
-  //     }
+  // Avatar URL validation
+  if (userData.avatar.url) {
+    // Only validate if URL is provided
+    try {
+      new URL(userData.avatar.url);
+    } catch (_) {
+      errors.avatarUrl = "Avatar URL must be a valid URL.";
+    }
+  }
 
-  //     // Validate alt text if provided
-  //     if (userData.avatar.alt && typeof userData.avatar.alt !== "string") {
-  //       errors.avatarAlt = "Avatar alt text must be a string.";
-  //     }
-  //   }
-  // } else {
-  //   errors.avatar = "Avatar is required.";
-  // }
+  // Avatar URL validation
+  if (!userData.avatar.url) {
+    errors.avatarUrl = "Avatar URL is required.";
+  } else {
+    try {
+      new URL(userData.avatar.url);
+    } catch (_) {
+      errors.avatarUrl = "Avatar URL must be a valid URL.";
+    }
+  }
 
   setValidationErrors(errors);
   return Object.keys(errors).length === 0;
