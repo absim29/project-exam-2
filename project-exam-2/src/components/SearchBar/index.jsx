@@ -10,15 +10,20 @@ function SearchBar({ onSearch }) {
   };
   return (
     <div className="position-relative mb-4">
-      <Form.Control
-        id="searchbar"
-        type="text"
-        value={input}
-        placeholder="Search venues..."
-        onChange={handleSearch}
-        className="rounded-3 px-5" // Padding left to avoid overlap with the icon
-        style={{ border: "1px solid #ccc" }} // Adding a light border
-      />
+      <Form.Group>
+        <Form.Label htmlFor="searchbar" className="visually-hidden">
+          Search Venues
+        </Form.Label>
+        <Form.Control
+          id="searchbar"
+          type="text"
+          value={input}
+          placeholder="Search venues..."
+          onChange={handleSearch}
+          className="rounded-3 px-5" // Padding left to avoid overlap with the icon
+          style={{ border: "1px solid #ccc" }} // Adding a light border
+        />
+      </Form.Group>
       <SearchIcon
         className="position-absolute"
         style={{
