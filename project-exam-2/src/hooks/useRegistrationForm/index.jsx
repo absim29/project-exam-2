@@ -37,14 +37,6 @@ function useRegistrationForm(
         throw new Error(user.message || "Submission failed. Please try again.");
       }
 
-      // // Successful submission
-      // const username = user.data.name;
-      // const accessToken = user.data.accessToken;
-      // const email = user.data.email;
-      // localStorage.setItem("accessToken", accessToken);
-      // localStorage.setItem("username", username);
-      // localStorage.setItem("email", email);
-
       // Close the registration modal and open the login modal
       handleClose();
       handleOpenLogin();
