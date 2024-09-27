@@ -24,16 +24,6 @@ export const validateForm = (userData, setValidationErrors) => {
   }
 
   // Avatar URL validation
-  if (userData.avatar.url) {
-    // Only validate if URL is provided
-    try {
-      new URL(userData.avatar.url);
-    } catch (_) {
-      errors.avatarUrl = "Avatar URL must be a valid URL.";
-    }
-  }
-
-  // Avatar URL validation
   if (!userData.avatar.url) {
     errors.avatarUrl = "Avatar URL is required.";
   } else {
