@@ -70,6 +70,17 @@ footer {
   width: 23.667em !important;
 }
 
+.rdrWeekDay,
+.rdrMonthPicker select,
+.rdrYearPicker select,
+.rdrDateDisplay span input {
+  color: black !important;
+}
+
+.rdrDayDisabled .rdrDayNumber span {
+  color: dimgrey;
+}
+
 /*Button*/
 .custom-color {
   background-color: #ECCB99 !important;
