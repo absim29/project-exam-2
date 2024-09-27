@@ -10,6 +10,12 @@
   padding: 0 10px 0 10px;
 }
 
+.venue-card:hover,
+.venue-card-profile:hover {
+  opacity: 90%;
+}
+
+
 .card-image {
   width: 100%;
   height: 220px;
