@@ -8,6 +8,18 @@ import { Box, LinearProgress } from "@mui/material";
 
 const url = BASE_API + VENUES_API;
 
+/**
+ * SingleVenue component for displaying details of a specific venue.
+ * It retrieves the venue ID from the URL parameters, fetches the venue data,
+ * and displays a loading indicator or error message as needed.
+ *
+ * @component
+ * @example
+ * return (
+ *   <SingleVenue />
+ * )
+ */
+
 function SingleVenue() {
   let { id } = useParams();
   const { data, isError, isLoading } = useFetchSingle(url, id);

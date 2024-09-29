@@ -4,6 +4,18 @@ import MyButton from "../../Button";
 import { API_KEY, BASE_API, VENUES_API } from "../../../constants/apiUrl";
 import { useNavigate, useParams } from "react-router-dom";
 
+/**
+ * DeleteVenueModal component prompts the user for confirmation
+ * before deleting a venue.
+ *
+ * @param {Object} props - Component properties
+ * @param {boolean} props.show - Controls the visibility of the modal
+ * @param {function} props.handleClose - Function to close the modal
+ * @param {Object} props.venue - Venue data to be deleted
+ *
+ * @returns {JSX.Element} The rendered DeleteVenueModal component.
+ */
+
 function DeleteVenueModal({ show, handleClose, venue }) {
   const { id } = useParams();
   const url = `${BASE_API}${VENUES_API}/${id}`;
@@ -13,6 +25,10 @@ function DeleteVenueModal({ show, handleClose, venue }) {
   const [error, setError] = useState(null);
 
   const token = localStorage.getItem("accessToken");
+
+  /**
+   * Handles the deletion of the venue by making a DELETE request to the API.
+   */
 
   const handleDelete = async () => {
     setLoading(true);

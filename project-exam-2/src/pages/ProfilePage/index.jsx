@@ -11,6 +11,18 @@ import { Box, LinearProgress } from "@mui/material";
 
 const url = BASE_API + PROFILES_API;
 
+/**
+ * ProfilePage component for displaying the user profile.
+ * It retrieves the username from local storage and fetches the user data
+ * from the API, displaying a loading indicator or error message as needed.
+ *
+ * @component
+ * @example
+ * return (
+ *   <ProfilePage />
+ * )
+ */
+
 function ProfilePage() {
   const [username, setUsername] = useState(null);
 

@@ -9,7 +9,35 @@ import { validateForm } from "../../../functions/FormValidation";
 import MyButton from "../../Button";
 import { Divider } from "@mui/material";
 
+/**
+ * RegistrationModal component renders a modal for user registration,
+ * including form fields for name, email, password, avatar, bio, and
+ * an option to register as a venue manager.
+ *
+ * @param {Object} props - Component properties
+ * @param {boolean} props.show - Controls the visibility of the modal
+ * @param {function} props.handleClose - Function to close the modal
+ * @param {function} props.handleOpenLogin - Function to open the login modal
+ *
+ * @returns {JSX.Element} The rendered RegistrationModal component.
+ */
+
 function RegistrationModal({ show, handleClose, handleOpenLogin }) {
+  /**
+   * Initializes state with empty fields for name, email, password, avatar,
+   * bio, and venueManager option.
+   *
+   * @typedef {Object} RegistrationFormData
+   * @property {string} name - The user's name
+   * @property {string} email - The user's email address
+   * @property {string} password - The user's password
+   * @property {Object} avatar - The user's avatar
+   * @property {string} avatar.url - The URL for the avatar image
+   * @property {string} bio - The user's biography
+   * @property {boolean} venueManager - Indicates if the user wants to register
+   * as a venue manager
+   */
+
   const initialState = {
     name: "",
     email: "",
@@ -18,6 +46,13 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
     bio: "",
     venueManager: false,
   };
+
+  /**
+   * Handles form submission to register the user.
+   *
+   * @function handleSubmit
+   */
+
   const {
     userData,
     setUserData,

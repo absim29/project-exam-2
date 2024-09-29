@@ -9,11 +9,36 @@ import { validateForm } from "../../../functions/LoginValidation";
 import MyButton from "../../Button";
 import { Divider } from "@mui/material";
 
+/**
+ * LoginModal component renders a modal for user login, including form fields
+ * for email and password, and social login options.
+ *
+ * @param {Object} props - Component properties
+ * @param {boolean} props.show - Controls the visibility of the modal
+ * @param {function} props.handleClose - Function to close the modal
+ *
+ * @returns {JSX.Element} The rendered LoginModal component.
+ */
+
 function LoginModal({ show, handleClose }) {
+  /**
+   * Initializes state with empty email and password fields.
+   *
+   * @typedef {Object} LoginFormData
+   * @property {string} email - The user's email address
+   * @property {string} password - The user's password
+   */
+
   const initialState = {
     email: "",
     password: "",
   };
+
+  /**
+   * Handles form submission to log in the user.
+   *
+   * @function handleSubmit
+   */
 
   const {
     userData,

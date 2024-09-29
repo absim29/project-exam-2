@@ -8,6 +8,13 @@ import RegistrationModal from "../Modals/RegistrationModal";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import UserImage from "../../assets/user-image.jpg";
 
+/**
+ * Header component that displays the navigation bar, including
+ * links to venues and user authentication options.
+ *
+ * @returns {JSX.Element} The rendered Header component.
+ */
+
 function Header() {
   const headerBackground = {
     backgroundColor: "#80A3AB",

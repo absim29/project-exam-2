@@ -2,6 +2,21 @@ import { useState, useEffect } from "react";
 import { API_KEY } from "../../constants/apiUrl";
 // import { API_KEY_AUTH, BASE_API } from "../../constants/apiUrl";
 
+/**
+ * Custom React hook to fetch a user's profile from the given API URL using an access token and an API key.
+ *
+ * @param {string} apiUrl - The base API URL for fetching the profile.
+ *
+ * @returns {{
+ *  data: any | null,
+ *  isLoading: boolean,
+ *  isError: boolean
+ * }}
+ *  - `data`: The profile data or null if no data is fetched.
+ *  - `isLoading`: A boolean indicating whether the profile data is still being fetched.
+ *  - `isError`: A boolean indicating whether an error occurred during the fetch.
+ */
+
 function useGetProfile(apiUrl) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

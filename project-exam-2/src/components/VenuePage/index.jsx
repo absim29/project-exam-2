@@ -14,6 +14,38 @@ import PetsIcon from "@mui/icons-material/Pets";
 import GLightbox from "glightbox";
 import "glightbox/dist/css/glightbox.css";
 
+/**
+ * VenuePage component displays detailed information about a specific venue,
+ * including its images, location, price, description, amenities, and bookings.
+ *
+ * @component
+ * @param {Object} props - The props for the component.
+ * @param {Object} props.venue - The venue data to be displayed.
+ *
+ * @param {string} props.venue.id - The unique identifier for the venue.
+ * @param {string} props.venue.name - The name of the venue.
+ * @param {string} props.venue.description - The description of the venue.
+ * @param {Array<Object>} props.venue.media - The media associated with the venue.
+ * @param {number} props.venue.price - The price of the venue.
+ * @param {number} props.venue.rating - The rating of the venue.
+ * @param {Object} props.venue.location - The location of the venue.
+ * @param {string} props.venue.location.city - The city of the venue.
+ * @param {string} props.venue.location.country - The country of the venue.
+ * @param {number} props.venue.maxGuests - The maximum number of guests for the venue.
+ * @param {Object} props.venue.meta - Additional metadata, including amenities.
+ * @param {Object} props.venue.meta.amenities - The amenities available at the venue.
+ * @param {boolean} props.venue.meta.amenities.wifi - Indicates if free Wi-Fi is available.
+ * @param {boolean} props.venue.meta.amenities.parking - Indicates if free parking is available.
+ * @param {boolean} props.venue.meta.amenities.breakfast - Indicates if free breakfast is available.
+ * @param {boolean} props.venue.meta.amenities.pets - Indicates if pets are allowed.
+ * @param {Array<Object>} props.venue.bookings - The list of bookings associated with the venue.
+ * @param {Object} props.venue.owner - The owner of the venue.
+ * @param {string} props.venue.owner.email - The email of the venue owner.
+ * @param {Object} props.venue.owner.avatar - The avatar image of the venue owner.
+ *
+ * @returns {JSX.Element} The rendered VenuePage component.
+ */
+
 function VenuePage({ venue }) {
   // Extract relevant details from the venue data
   const {

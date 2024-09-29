@@ -1,3 +1,12 @@
+/**
+ * Validates the avatar URL in the user data object.
+ *
+ * @param {Object} userData - The user data object containing the avatar information.
+ * @param {function} setValidationErrors - Function to set validation error messages.
+ *
+ * @returns {boolean} - Returns `true` if the avatar URL is valid, `false` otherwise.
+ */
+
 export const validateAvatar = (userData, setValidationErrors) => {
   const errors = {};
 

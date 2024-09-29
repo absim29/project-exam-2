@@ -6,6 +6,18 @@ import useUpdate from "../../../hooks/useUpdate";
 import { validateAvatar } from "../../../functions/AvatarValidation";
 import MyButton from "../../Button";
 
+/**
+ * AvatarModal component allows users to edit their profile information,
+ * including their bio and avatar URL.
+ *
+ * @param {Object} props - Component properties
+ * @param {boolean} props.show - Controls the visibility of the modal
+ * @param {function} props.handleClose - Function to close the modal
+ * @param {Object} props.user - User data containing current avatar and bio
+ *
+ * @returns {JSX.Element} The rendered AvatarModal component.
+ */
+
 const username = localStorage.getItem("username");
 const url = `${BASE_API}${PROFILES_API}/${username}`;
 

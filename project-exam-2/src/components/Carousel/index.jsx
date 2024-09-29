@@ -3,6 +3,15 @@ import Carousel from "react-bootstrap/Carousel";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 
+/**
+ * MyCarousel component for displaying a carousel of items.
+ *
+ * @param {Object} props - The component props.
+ * @param {React.ReactNode} props.children - The items to be displayed in the carousel.
+ *
+ * @returns {JSX.Element} The rendered MyCarousel component.
+ */
+
 function MyCarousel({ children }) {
   const [index, setIndex] = useState(0);
 

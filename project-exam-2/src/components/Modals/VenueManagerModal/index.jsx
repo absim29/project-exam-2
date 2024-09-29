@@ -8,10 +8,36 @@ import MyButton from "../../Button";
 const username = localStorage.getItem("username");
 const url = `${BASE_API}${PROFILES_API}/${username}`;
 
+/**
+ * VenueManagerModal component renders a modal that allows users to register
+ * as venue managers. It contains a checkbox to enable or disable the
+ * venue manager role and submits the changes to the server.
+ *
+ * @param {Object} props - Component properties
+ * @param {boolean} props.show - Controls the visibility of the modal
+ * @param {function} props.handleClose - Function to close the modal
+ * @param {Object} props.user - User data object containing venueManager status
+ *
+ * @returns {JSX.Element} The rendered VenueManagerModal component.
+ */
+
 function VenueManagerModal({ show, handleClose, user }) {
+  /**
+   * Initializes state with the venueManager property from the user data.
+   *
+   * @typedef {Object} VenueManagerData
+   * @property {boolean} venueManager - Indicates if the user is a venue manager
+   */
+
   const initialState = {
     venueManager: user.venueManager || false,
   };
+
+  /**
+   * Handles the form submission to update the venue manager status.
+   *
+   * @function handleSubmit
+   */
 
   const { userData, setUserData, loading, error, handleSubmit } = useUpdate(
     initialState,

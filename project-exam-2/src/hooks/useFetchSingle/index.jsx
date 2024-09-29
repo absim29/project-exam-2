@@ -1,6 +1,22 @@
 import { useState, useEffect } from "react";
 import { EXTRAS_VENUE_API } from "../../constants/apiUrl";
 
+/**
+ * Custom React hook to fetch data for a single item from an API with a specific ID.
+ *
+ * @param {string} apiUrl - The base API URL.
+ * @param {string|number} id - The unique identifier for the item being fetched.
+ *
+ * @returns {{
+ *  data: any | null,
+ *  isLoading: boolean,
+ *  isError: boolean
+ * }}
+ *  - `data`: The fetched data object or null if no data is available.
+ *  - `isLoading`: A boolean representing the loading state.
+ *  - `isError`: A boolean representing whether an error occurred during the fetch.
+ */
+
 function useFetchSingle(apiUrl, id) {
   const [data, setData] = useState(null);
   // State for holding our loading state

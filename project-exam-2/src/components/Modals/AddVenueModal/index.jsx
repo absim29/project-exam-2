@@ -6,6 +6,16 @@ import MyButton from "../../Button";
 import useUpdate from "../../../hooks/useUpdate";
 import { BASE_API, VENUES_API } from "../../../constants/apiUrl";
 
+/**
+ * AddVenueModal component allows users to add a new venue.
+ *
+ * @param {Object} props - Component properties
+ * @param {boolean} props.show - Controls the visibility of the modal
+ * @param {function} props.handleClose - Function to close the modal
+ *
+ * @returns {JSX.Element} The rendered AddVenueModal component.
+ */
+
 const url = BASE_API + VENUES_API;
 
 function AddVenueModal({ show, handleClose }) {

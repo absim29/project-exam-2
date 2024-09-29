@@ -1,3 +1,12 @@
+/**
+ * Validates the fields required to add a venue, including media URL, name, description, price, and max guests.
+ *
+ * @param {Object} userData - The user data object containing fields to validate (media, name, description, price, maxGuests).
+ * @param {function} setValidationErrors - Function to set validation error messages.
+ *
+ * @returns {boolean} - Returns `true` if all validations pass, `false` otherwise.
+ */
+
 export const validateAddVenue = (userData, setValidationErrors) => {
   const errors = {};
 

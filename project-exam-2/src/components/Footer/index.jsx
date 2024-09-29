@@ -1,6 +1,12 @@
 import React from "react";
 import CopyrightIcon from "@mui/icons-material/Copyright";
 
+/**
+ * Footer component displaying copyright information.
+ *
+ * @returns {JSX.Element} The rendered Footer component.
+ */
+
 function Footer() {
   return (
     <footer className="d-flex justify-content-center p-2">

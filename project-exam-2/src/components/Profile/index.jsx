@@ -8,6 +8,26 @@ import AddVenueModal from "../Modals/AddVenueModal";
 import MyCarousel from "../Carousel";
 import { motion } from "framer-motion";
 
+/**
+ * Profile component displays user information, including their avatar,
+ * biography, hosted venues, and bookings. It provides modals for editing
+ * the profile, adding venues, and registering as a venue manager.
+ *
+ * @component
+ * @param {Object} user - The user object containing user information.
+ * @param {string} user.name - The user's name.
+ * @param {Object} user.avatar - The user's avatar information.
+ * @param {string} user.avatar.url - The URL of the user's avatar.
+ * @param {string} user.avatar.alt - The alt text for the user's avatar.
+ * @param {string} user.bio - The user's biography.
+ * @param {boolean} user.venueManager - Indicates if the user is a venue manager.
+ * @param {Array} user.bookings - An array of bookings made by the user.
+ * @param {Array} user.venues - An array of venues hosted by the user.
+ * @param {Object} user._count - Count of bookings and other user metrics.
+ *
+ * @returns {JSX.Element} The rendered profile component.
+ */
+
 function Profile({ user }) {
   const [showEditProfileModal, setShowEditProfileModal] = useState(false);
   const handleShowEditProfile = () => setShowEditProfileModal(true);

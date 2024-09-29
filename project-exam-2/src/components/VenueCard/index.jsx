@@ -3,6 +3,27 @@ import VenueImage from "../../assets/venue-card.jpg";
 import Rating from "@mui/material/Rating";
 import { Link } from "react-router-dom";
 
+/**
+ * VenueCard component displays information about a specific venue,
+ * including its image, name, location, price, and rating.
+ *
+ * @component
+ * @param {Object} props - The props for the component.
+ * @param {Object} props.venue - The venue data to be displayed.
+ * @param {string} props.className - Additional CSS class(es) for styling.
+ *
+ * @param {string} props.venue.id - The unique identifier for the venue.
+ * @param {string} props.venue.name - The name of the venue.
+ * @param {Array<Object>} props.venue.media - The media associated with the venue.
+ * @param {number} props.venue.price - The price of the venue.
+ * @param {number} props.venue.rating - The rating of the venue.
+ * @param {Object} props.venue.location - The location of the venue.
+ * @param {string} props.venue.location.city - The city of the venue.
+ * @param {string} props.venue.location.country - The country of the venue.
+ *
+ * @returns {JSX.Element} The rendered VenueCard component.
+ */
+
 function VenueCard({ venue, className }) {
   // Extract relevant details from the venue data
   const { name, media, price, rating, location } = venue;

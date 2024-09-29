@@ -6,6 +6,17 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import CopyrightIcon from "@mui/icons-material/Copyright";
 
+/**
+ * LandingPage component that serves as the entry point of the application.
+ * It displays a background video, a logo, and a call-to-action button.
+ *
+ * @component
+ * @example
+ * return (
+ *   <LandingPage />
+ * )
+ */
+
 function LandingPage() {
   return (
     <motion.div

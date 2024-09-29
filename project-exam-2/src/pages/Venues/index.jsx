@@ -10,6 +10,17 @@ import { motion } from "framer-motion";
 
 const url = BASE_API + VENUES_API;
 
+/**
+ * Venues component for displaying a list of holiday destinations.
+ * It includes a search bar for filtering venues by name and pagination for navigating through results.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Venues />
+ * )
+ */
+
 function Venues() {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1); // Local pagination state

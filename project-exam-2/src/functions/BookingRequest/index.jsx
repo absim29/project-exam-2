@@ -1,5 +1,15 @@
 import { API_KEY, BASE_API, BOOKINGS_API } from "../../constants/apiUrl";
 
+/**
+ * Sends a booking request to the API with the provided booking data.
+ *
+ * @param {Object} bookingData - The data to be sent with the booking request, typically containing user and venue information.
+ *
+ * @returns {Promise<Object>} - A promise that resolves to the response data from the API if the request is successful.
+ *
+ * @throws {Error} - Throws an error if the request fails or the response is not OK.
+ */
+
 const url = BASE_API + BOOKINGS_API;
 
 async function BookingRequest(bookingData) {

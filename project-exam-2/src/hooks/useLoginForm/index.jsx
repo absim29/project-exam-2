@@ -2,6 +2,28 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_API, LOGIN_API, VENUE_MANAGER } from "../../constants/apiUrl";
 
+/**
+ * Custom React hook to handle user login form submission and validation.
+ *
+ * @param {Object} initialState - The initial state of the form data (e.g., username and password).
+ * @param {function} validateForm - The validation function to validate form input.
+ *
+ * @returns {{
+ *  userData: Object,
+ *  setUserData: function,
+ *  loading: boolean,
+ *  error: string | null,
+ *  validationErrors: Object,
+ *  handleSubmit: function
+ * }}
+ *  - `userData`: The form data state object (e.g., username, password).
+ *  - `setUserData`: Function to update the form data state.
+ *  - `loading`: A boolean indicating whether the form is currently submitting.
+ *  - `error`: A string containing any error message from the login process or `null` if no error occurred.
+ *  - `validationErrors`: An object containing validation error messages for each form field.
+ *  - `handleSubmit`: The function to handle form submission, including login logic and navigation.
+ */
+
 function useLoginForm(initialState, validateForm) {
   const [userData, setUserData] = useState(initialState);
   const [loading, setLoading] = useState(false);

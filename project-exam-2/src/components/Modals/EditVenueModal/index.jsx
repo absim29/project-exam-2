@@ -7,11 +7,43 @@ import useUpdate from "../../../hooks/useUpdate";
 import { BASE_API, VENUES_API } from "../../../constants/apiUrl";
 import { useParams } from "react-router-dom";
 
+/**
+ * EditVenueModal component allows users to edit venue details, including
+ * name, description, media, price, maximum guests, amenities, and location.
+ *
+ * @param {Object} props - Component properties
+ * @param {boolean} props.show - Controls the visibility of the modal
+ * @param {function} props.handleClose - Function to close the modal
+ * @param {Object} props.venue - The venue data to be edited
+ *
+ * @returns {JSX.Element} The rendered EditVenueModal component.
+ */
+
 function EditVenueModal({ show, handleClose, venue }) {
   let { id } = useParams();
   const url = `${BASE_API}${VENUES_API}/${id}`;
 
-  // Initialize state with venue data if available
+  /**
+   * Initializes state with the provided venue data or default values.
+   *
+   * @typedef {Object} VenueData
+   * @property {string} name - The name of the venue
+   * @property {string} description - A description of the venue
+   * @property {Array<{url: string, alt: string}>} media - Array of media objects
+   * @property {number} price - The price of the venue
+   * @property {number} maxGuests - Maximum number of guests
+   * @property {Object} meta - Amenities offered by the venue
+   * @property {boolean} meta.wifi - Indicates if Wi-Fi is available
+   * @property {boolean} meta.parking - Indicates if parking is available
+   * @property {boolean} meta.breakfast - Indicates if breakfast is included
+   * @property {boolean} meta.pets - Indicates if pets are allowed
+   * @property {Object} location - Venue's location details
+   * @property {string} location.address - Venue address
+   * @property {string} location.city - Venue city
+   * @property {string} location.zip - Venue ZIP code
+   * @property {string} location.country - Venue country
+   */
+
   const initialState = {
     name: venue?.name || "",
     description: venue?.description || "",
@@ -41,14 +73,23 @@ function EditVenueModal({ show, handleClose, venue }) {
     handleSubmit,
   } = useUpdate(initialState, validateAddVenue, url, "PUT", handleClose);
 
-  // Function to handle media input change
+  /**
+   * Handles input changes for media URLs.
+   *
+   * @param {number} index - The index of the media item being changed
+   * @param {Object} e - The event object from the input
+   */
+
   const handleMediaChange = (index, e) => {
     const newMedia = [...userData.media];
     newMedia[index].url = e.target.value;
     setUserData({ ...userData, media: newMedia });
   };
 
-  // Function to add a new media input field
+  /**
+   * Adds a new media input field to the form.
+   */
+
   const addMediaField = () => {
     setUserData({
       ...userData,
@@ -56,7 +97,12 @@ function EditVenueModal({ show, handleClose, venue }) {
     });
   };
 
-  // Function to remove a media input field
+  /**
+   * Removes a media input field from the form.
+   *
+   * @param {number} index - The index of the media item to be removed
+   */
+
   const removeMediaField = (index) => {
     const newMedia = userData.media.filter((_, i) => i !== index);
     setUserData({ ...userData, media: newMedia });

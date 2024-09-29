@@ -1,6 +1,30 @@
 import { useState } from "react";
 import { BASE_API, REGISTER_API } from "../../constants/apiUrl";
 
+/**
+ * Custom React hook to handle user registration form submission, validation, and modal control.
+ *
+ * @param {Object} initialState - The initial state of the registration form data (e.g., username, password, email).
+ * @param {function} validateForm - Function to validate the form data.
+ * @param {function} handleClose - Function to close the registration modal.
+ * @param {function} handleOpenLogin - Function to open the login modal.
+ *
+ * @returns {{
+ *  userData: Object,
+ *  setUserData: function,
+ *  loading: boolean,
+ *  error: string | null,
+ *  validationErrors: Object,
+ *  handleSubmit: function
+ * }}
+ *  - `userData`: The form data object (e.g., username, password, email).
+ *  - `setUserData`: Function to update the form data state.
+ *  - `loading`: A boolean indicating whether the form is submitting.
+ *  - `error`: A string containing any error message from the registration process or `null` if no error occurred.
+ *  - `validationErrors`: An object containing validation errors for each form field.
+ *  - `handleSubmit`: Function to handle form submission, including API calls and form validation.
+ */
+
 function useRegistrationForm(
   initialState,
   validateForm,

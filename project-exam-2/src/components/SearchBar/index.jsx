@@ -2,6 +2,19 @@ import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { Form } from "react-bootstrap";
 
+/**
+ * SearchBar component allows users to input a search term
+ * for finding venues. It calls the provided onSearch function
+ * whenever the input changes, passing the current input value.
+ *
+ * @component
+ * @param {Object} props - The props for the component.
+ * @param {function} props.onSearch - The function to call when the input value changes.
+ * This function receives the current input value as an argument.
+ *
+ * @returns {JSX.Element} The rendered search bar component.
+ */
+
 function SearchBar({ onSearch }) {
   const [input, setInput] = useState("");
   const handleSearch = (e) => {

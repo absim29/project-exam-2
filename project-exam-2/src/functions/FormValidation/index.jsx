@@ -1,3 +1,12 @@
+/**
+ * Validates user data fields including name, email, password, bio, and avatar URL.
+ *
+ * @param {Object} userData - The user data object containing fields to validate (name, email, password, bio, avatar).
+ * @param {function} setValidationErrors - Function to set validation error messages.
+ *
+ * @returns {boolean} - Returns `true` if all validations pass, `false` otherwise.
+ */
+
 export const validateForm = (userData, setValidationErrors) => {
   const errors = {};
 

@@ -5,6 +5,18 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import MyButton from "../Button";
 import BookingRequest from "../../functions/BookingRequest";
 
+/**
+ * Calendar component for selecting booking dates and guests.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} [props.bookings] - The existing bookings for the venue.
+ * @param {number} props.maxGuests - The maximum number of guests allowed.
+ * @param {string} props.venueId - The ID of the venue being booked.
+ * @param {boolean} props.isOwner - Indicates if the current user is the owner of the venue.
+ *
+ * @returns {JSX.Element} The rendered Calendar component.
+ */
+
 function Calendar({ bookings = [], maxGuests, venueId, isOwner }) {
   const [date, setDate] = useState({
     startDate: new Date(),
