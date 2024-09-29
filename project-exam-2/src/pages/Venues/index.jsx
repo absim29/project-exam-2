@@ -52,7 +52,7 @@ function Venues() {
 
   return (
     <Layout>
-      <h2 className="second-font mt-2">Find your next holiday destination</h2>
+      <h2 className="second-font mt-4">Find your next holiday destination</h2>
       <SearchBar onSearch={setSearchQuery} />
       {isLoading ? (
         <Box sx={{ width: "50%" }}>
