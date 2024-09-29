@@ -30,9 +30,13 @@ function VenueCard({ venue, className }) {
               e.target.src = VenueImage;
             }}
           />
+
           <h2 className="first-font fs-5 mt-2">{name}</h2>
+
           <h3 className="third-font fs-5">{locationString}</h3>
+
           <h4 className="first-font fs-4">Price:${price}</h4>
+
           <Rating name="size-small" value={rating || 0} size="small" readOnly />
         </div>
       </Link>

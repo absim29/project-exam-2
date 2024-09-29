@@ -18,7 +18,6 @@ function EditVenueModal({ show, handleClose, venue }) {
     media: venue?.media || [{ url: "", alt: "" }],
     price: venue?.price || 0,
     maxGuests: venue?.maxGuests || 0,
-    rating: venue?.rating || 0, // Include rating if needed
     meta: {
       wifi: venue?.meta?.wifi || false,
       parking: venue?.meta?.parking || false,
@@ -68,10 +67,12 @@ function EditVenueModal({ show, handleClose, venue }) {
       <Modal.Header closeButton>
         <Modal.Title className="first-font">Edit Venue</Modal.Title>
       </Modal.Header>
+
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>NAME</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="required"
@@ -87,6 +88,7 @@ function EditVenueModal({ show, handleClose, venue }) {
 
           <Form.Group className="mb-3" controlId="formBasicDescription">
             <Form.Label>DESCRIPTION</Form.Label>
+
             <Form.Control
               as="textarea"
               rows={3}
@@ -103,6 +105,7 @@ function EditVenueModal({ show, handleClose, venue }) {
 
           <Form.Group className="mb-3" controlId="formBasicMediaUrl">
             <Form.Label>MEDIA</Form.Label>
+
             {userData.media.map((mediaItem, index) => (
               <div key={index} className="mb-2">
                 <Form.Control
@@ -126,6 +129,7 @@ function EditVenueModal({ show, handleClose, venue }) {
 
           <Form.Group className="mb-3" controlId="formBasicPrice">
             <Form.Label>PRICE</Form.Label>
+
             <Form.Control
               type="number"
               placeholder="required"
@@ -143,6 +147,7 @@ function EditVenueModal({ show, handleClose, venue }) {
 
           <Form.Group className="mb-3" controlId="formBasicMaxGuests">
             <Form.Label>MAX GUESTS</Form.Label>
+
             <Form.Control
               type="number"
               placeholder="required"
@@ -163,6 +168,7 @@ function EditVenueModal({ show, handleClose, venue }) {
 
           <Form.Group className="mb-3" controlId="formBasicPrice">
             <Form.Label>AMENITIES</Form.Label>
+
             <div>
               <Form.Check
                 type="checkbox"
@@ -217,6 +223,7 @@ function EditVenueModal({ show, handleClose, venue }) {
 
           <Form.Group className="mb-3" controlId="formBasicAddress">
             <Form.Label>ADDRESS</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="optional"
@@ -232,6 +239,7 @@ function EditVenueModal({ show, handleClose, venue }) {
 
           <Form.Group className="mb-3" controlId="formBasicCity">
             <Form.Label>CITY</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="optional"
@@ -247,6 +255,7 @@ function EditVenueModal({ show, handleClose, venue }) {
 
           <Form.Group className="mb-3" controlId="formBasicZip">
             <Form.Label>ZIP</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="optional"
@@ -262,6 +271,7 @@ function EditVenueModal({ show, handleClose, venue }) {
 
           <Form.Group className="mb-3" controlId="formBasicCountry">
             <Form.Label>COUNTRY</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="optional"
@@ -274,6 +284,7 @@ function EditVenueModal({ show, handleClose, venue }) {
               }
             />
           </Form.Group>
+
           <div className="d-flex justify-content-center">
             <MyButton
               type="submit"

@@ -46,9 +46,12 @@ function DeleteVenueModal({ show, handleClose, venue }) {
       <Modal.Header closeButton>
         <Modal.Title className="first-font">Delete Venue</Modal.Title>
       </Modal.Header>
+
       <Modal.Body>
         <h3>Are you sure you want to delete?</h3>
+
         <p className="fst-italic">This action cannot be undone</p>
+
         <div className="d-flex justify-content-center">
           <MyButton
             onClick={handleDelete}

@@ -29,10 +29,12 @@ function AvatarModal({ show, handleClose, user }) {
       <Modal.Header closeButton>
         <Modal.Title className="first-font">Edit Profile</Modal.Title>
       </Modal.Header>
+
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicBio">
             <Form.Label>BIO</Form.Label>
+
             <Form.Control
               as="textarea"
               rows={3}
@@ -46,6 +48,7 @@ function AvatarModal({ show, handleClose, user }) {
 
           <Form.Group className="mb-3" controlId="formBasicAvatarUrl">
             <Form.Label>AVATAR</Form.Label>
+
             <Form.Control
               type="url"
               placeholder="Paste your URL here"
@@ -61,6 +64,7 @@ function AvatarModal({ show, handleClose, user }) {
               <p style={{ color: "red" }}>{validationErrors.avatarUrl}</p>
             )}
           </Form.Group>
+
           <div className="d-flex justify-content-center">
             <MyButton
               type="submit"

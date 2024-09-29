@@ -10,30 +10,26 @@ const url = BASE_API + VENUES_API;
 
 function AddVenueModal({ show, handleClose }) {
   const initialState = {
-    name: "", // Required
-    description: "", // Required
+    name: "",
+    description: "",
     media: [
-      // Optional
       {
-        url: "", // URL of the image
-        // alt: "", // Alt text for the image
+        url: "",
       },
     ],
-    price: 0, // Required (default value: 0)
-    maxGuests: 0, // Required (default value: 0)
+    price: 0,
+    maxGuests: 0,
     meta: {
-      // Optional
-      wifi: false, // Optional (default value: false)
-      parking: false, // Optional (default value: false)
-      breakfast: false, // Optional (default value: false)
-      pets: false, // Optional (default value: false)
+      wifi: false,
+      parking: false,
+      breakfast: false,
+      pets: false,
     },
     location: {
-      // Optional
-      address: null, // Optional (default value: null)
-      city: null, // Optional (default value: null)
-      zip: null, // Optional (default value: null)
-      country: null, // Optional (default value: null)
+      address: null,
+      city: null,
+      zip: null,
+      country: null,
     },
   };
 
@@ -72,10 +68,12 @@ function AddVenueModal({ show, handleClose }) {
       <Modal.Header closeButton>
         <Modal.Title className="first-font">Add a new venue</Modal.Title>
       </Modal.Header>
+
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>NAME</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="Venue name"
@@ -91,6 +89,7 @@ function AddVenueModal({ show, handleClose }) {
 
           <Form.Group className="mb-3" controlId="formBasicDescription">
             <Form.Label>DESCRIPTION</Form.Label>
+
             <Form.Control
               as="textarea"
               rows={3}
@@ -107,6 +106,7 @@ function AddVenueModal({ show, handleClose }) {
 
           <Form.Group className="mb-3" controlId="formBasicMediaUrl">
             <Form.Label>MEDIA</Form.Label>
+
             {userData.media.map((mediaItem, index) => (
               <div key={index} className="mb-2">
                 <Form.Control
@@ -133,6 +133,7 @@ function AddVenueModal({ show, handleClose }) {
 
           <Form.Group className="mb-3" controlId="formBasicPrice">
             <Form.Label>PRICE</Form.Label>
+
             <Form.Control
               type="number"
               placeholder="Price"
@@ -156,6 +157,7 @@ function AddVenueModal({ show, handleClose }) {
 
           <Form.Group className="mb-3" controlId="formBasicMaxGuests">
             <Form.Label>MAX GUESTS</Form.Label>
+
             <Form.Control
               type="number"
               placeholder="Maximum guests"
@@ -178,6 +180,7 @@ function AddVenueModal({ show, handleClose }) {
 
           <Form.Group className="mb-3" controlId="formBasicPrice">
             <Form.Label>AMENITIES</Form.Label>
+
             <div>
               <Form.Check
                 type="checkbox"
@@ -191,6 +194,7 @@ function AddVenueModal({ show, handleClose }) {
                   })
                 }
               />
+
               <Form.Check
                 type="checkbox"
                 id="metaParking"
@@ -203,6 +207,7 @@ function AddVenueModal({ show, handleClose }) {
                   })
                 }
               />
+
               <Form.Check
                 type="checkbox"
                 id="metaBreakfast"
@@ -215,6 +220,7 @@ function AddVenueModal({ show, handleClose }) {
                   })
                 }
               />
+
               <Form.Check
                 type="checkbox"
                 id="metaPets"
@@ -232,6 +238,7 @@ function AddVenueModal({ show, handleClose }) {
 
           <Form.Group className="mb-3" controlId="formBasicAddress">
             <Form.Label>ADDRESS</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="Street no."
@@ -247,6 +254,7 @@ function AddVenueModal({ show, handleClose }) {
 
           <Form.Group className="mb-3" controlId="formBasicCity">
             <Form.Label>CITY</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="City"
@@ -262,6 +270,7 @@ function AddVenueModal({ show, handleClose }) {
 
           <Form.Group className="mb-3" controlId="formBasicZip">
             <Form.Label>ZIP CODE</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="Zip code"
@@ -277,6 +286,7 @@ function AddVenueModal({ show, handleClose }) {
 
           <Form.Group className="mb-3" controlId="formBasicCountry">
             <Form.Label>COUNTRY</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="Country"
@@ -289,6 +299,7 @@ function AddVenueModal({ show, handleClose }) {
               }
             />
           </Form.Group>
+
           <div className="d-flex justify-content-center">
             <MyButton
               type="submit"

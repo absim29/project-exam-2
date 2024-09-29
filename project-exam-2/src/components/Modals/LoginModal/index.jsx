@@ -29,10 +29,12 @@ function LoginModal({ show, handleClose }) {
       <Modal.Header closeButton>
         <Modal.Title className="first-font">Welcome back!</Modal.Title>
       </Modal.Header>
+
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>EMAIL</Form.Label>
+
             <Form.Control
               type="email"
               placeholder="Your email"
@@ -47,6 +49,7 @@ function LoginModal({ show, handleClose }) {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>PASSWORD</Form.Label>
+
             <Form.Control
               type="password"
               placeholder="Password"
@@ -59,6 +62,7 @@ function LoginModal({ show, handleClose }) {
               <p style={{ color: "red" }}>{validationErrors.password}</p>
             )}
           </Form.Group>
+
           <div className="d-flex justify-content-center mt-4">
             <MyButton
               type="submit"

@@ -42,6 +42,7 @@ function Profile({ user }) {
             e.target.src = UserImage;
           }}
         />
+
         <div className="d-flex flex-column justify-content-between">
           <div>
             <h4 className="first-font fs-4">{name}</h4>
@@ -55,6 +56,7 @@ function Profile({ user }) {
           </div>
 
           <MyButton label="Edit Profile" onClick={handleShowEditProfile} />
+
           <AvatarModal
             show={showEditProfileModal}
             handleClose={handleCloseEditProfile}
@@ -62,6 +64,7 @@ function Profile({ user }) {
           />
         </div>
       </motion.div>
+
       <div
         className="w-75 ml-4"
         style={{ maxWidth: "600px", minWidth: "300px" }}
@@ -114,6 +117,7 @@ function Profile({ user }) {
             </>
           )}
         </div>
+
         <div
           className="d-flex flex-column align-items-center my-bookings mb-5"
           style={{ width: "300px" }}

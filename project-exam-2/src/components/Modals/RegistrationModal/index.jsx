@@ -32,10 +32,12 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
       <Modal.Header closeButton>
         <Modal.Title className="first-font">Registration Form</Modal.Title>
       </Modal.Header>
+
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>NAME</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="Your name"
@@ -48,8 +50,10 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
               <p style={{ color: "red" }}>{validationErrors.name}</p>
             )}
           </Form.Group>
+
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>EMAIL</Form.Label>
+
             <Form.Control
               type="email"
               placeholder="Your email"
@@ -62,8 +66,10 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
               <p style={{ color: "red" }}>{validationErrors.email}</p>
             )}
           </Form.Group>
+
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>PASSWORD</Form.Label>
+
             <Form.Control
               type="password"
               placeholder="Password"
@@ -76,8 +82,10 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
               <p style={{ color: "red" }}>{validationErrors.password}</p>
             )}
           </Form.Group>
+
           <Form.Group className="mb-3" controlId="formBasicAvatarUrl">
             <Form.Label>AVATAR</Form.Label>
+
             <Form.Control
               type="url"
               placeholder="Paste your URL here"
@@ -93,8 +101,10 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
               <p style={{ color: "red" }}>{validationErrors.avatarUrl}</p>
             )}
           </Form.Group>
+
           <Form.Group className="mb-3" controlId="formBasicBio">
             <Form.Label>BIO</Form.Label>
+
             <Form.Control
               type="text"
               placeholder="Biography"
@@ -107,6 +117,7 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
               <p style={{ color: "red" }}>{validationErrors.bio}</p>
             )}
           </Form.Group>
+
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check
               type="checkbox"
@@ -117,10 +128,12 @@ function RegistrationModal({ show, handleClose, handleOpenLogin }) {
               }
             />
           </Form.Group>
+
           <p className="fst-italic">
             By registering, you agree to our Terms of Service and Privacy
             Policy.
           </p>
+
           <div className="d-flex justify-content-center">
             <MyButton
               type="submit"

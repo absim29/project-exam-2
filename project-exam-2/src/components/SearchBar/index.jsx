@@ -14,6 +14,7 @@ function SearchBar({ onSearch }) {
         <Form.Label htmlFor="searchbar" className="visually-hidden">
           Search Venues
         </Form.Label>
+
         <Form.Control
           id="searchbar"
           type="text"
@@ -24,6 +25,7 @@ function SearchBar({ onSearch }) {
           style={{ border: "1px solid #ccc" }} // Adding a light border
         />
       </Form.Group>
+
       <SearchIcon
         className="position-absolute"
         style={{

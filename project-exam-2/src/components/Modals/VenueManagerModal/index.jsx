@@ -26,6 +26,7 @@ function VenueManagerModal({ show, handleClose, user }) {
       <Modal.Header closeButton>
         <Modal.Title className="first-font">Become a venue manager</Modal.Title>
       </Modal.Header>
+
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicVenueManager">
@@ -38,11 +39,13 @@ function VenueManagerModal({ show, handleClose, user }) {
               }
               className="fs-5"
             />
+
             <p className="fst-italic">
               By registering, you agree to our Terms of Service and Privacy
               Policy.
             </p>
           </Form.Group>
+
           <div className="d-flex justify-content-center">
             <MyButton
               type="submit"
