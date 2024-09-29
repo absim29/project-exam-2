@@ -10,6 +10,7 @@ function BackgroundVideo() {
         autoPlay
         loop
         muted
+        playsInline
         className="w-100 h-100"
       />
     </div>
