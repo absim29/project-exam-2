@@ -1,124 +1,89 @@
 # Project Exam 2 - Holidaze
 
-**Holidaze** is a newly launched accommodation booking platform seeking a modern front-end solution to enhance user experience. This project focuses on developing a responsive and intuitive front-end application using the provided official API documentation.
+![image](/project-exam-2/src/assets/Screenshot%202024-10-07%20at%2014.29.51.png)
 
-The application encompasses two main components:
+Holidaze is a modern accommodation booking platform for travelers and venue managers. The platform provides users with a smooth and responsive interface for browsing and booking accommodations, while venue managers can register and manage their properties seamlessly.
 
-- **Customer-Facing Interface:** Users can browse, search for and book accommodations at various venues.
-- **Admin Dashboard:** Venue managers can register, manage venue details, and view the venue bookings.
+## Description
 
-While the project adheres to specific API functionalities, the design and overall user experience are left to the developer's discretion, allowing for creative flexibility in crafting a user-friendly application.
+Holidaze offers two primary interfaces:
 
-## Table of Contents
+- **Customer Interface:** Users can browse available venues, search by location or venue type, and make bookings for their preferred dates.
+- **Admin Dashboard:** Venue managers can register, list, and update their venues, as well as view bookings associated with each property.
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Tech Stack](#tech-stack)
-- [API Documentation](#api-documentation)
-- [User Stories](#user-stories)
-- [Contributing](#contributing)
-- [License](#license)
+Project highlights:
 
-## Installation
+- **Dynamic booking functionality** with an easy-to-navigate calendar view.
+- **Flexible search functionality.**
+- **Unique interfaces** tailored to both customers and venue managers.
 
-### Clone the repository to your local machine:
+## Built With
+
+This project uses the following technology stack:
+
+- [React.js](https://reactjs.org/)
+- [React Router](https://reactrouter.com/en/main/start/overview) for page navigation
+- [Bootstrap](https://getbootstrap.com) for styling
+- [API Integration](https://docs.noroff.dev/docs/v2) Noroff API
+- [Material UI](https://mui.com/material-ui/) for styled components
+- [Framer Motion](https://mui.com/material-ui/) for animations
+- [GLightbox ](https://mui.com/material-ui/) for image galleries
+- [React Calendar ](https://www.npmjs.com/package/react-calendar) for calendar functionality
+
+## Getting Started
+
+### Installing
+
+To set up the project locally, follow these steps:
+
+#### Clone the repository to your local machine:
 
 ```bash
 git clone https://github.com/absim29/project-exam-2.git
 ```
 
-### Navigate to the project directory:
+#### Navigate to the project directory:
 
 ```bash
 cd project-exam-2
 ```
 
-### Install dependencies:
+#### Install dependencies:
 
 ```bash
 npm install
 ```
 
-### Start the development server:
+### Running
+
+To run the app locally, execute the following command:
 
 ```bash
 npm start
 ```
 
-## Usage
-
-Open your browser and go to http://localhost:3000 (or whichever port your app is configured to run). Follow the instructions on the app.
-
-## Tech Stack
-
-- **React**: Frontend library for building the UI.
-- **Bootstrap**: For responsive design and styling.
-- **Material-UI**:
-  - **@mui/material**: ^6.0.2 — React components for faster and easier web development.
-  - **@mui/icons-material**: ^6.0.2 — Icon library for Material-UI.
-  - **@mui/x-date-pickers**: ^7.16.0 — Date and time pickers for Material-UI.
-- **Framer Motion**: ^11.5.6 — Animation library for React.
-- **React Calendar**: ^5.0.0 — A flexible calendar component for React.
-- **GLightbox**: ^3.3.0 — A lightbox gallery for images and videos.
-- **Custom Hooks**: (e.g., useUpdate) for managing API interactions.
-- **React-Bootstrap**: For UI components such as modal forms.
-- **API**: Integrated with a backend API using fetch for data handling.
-- **Form Validation**: Custom form validation logic for venue data.
-
-## API Documentation
-
-The API you are using for this project can be found under Holidaze in the [Noroff API documentation](https://docs.noroff.dev/docs/v2/).
-
-## User Stories
-
-- A user may view a list of Venues
-- A user may search for a specific Venue
-- A user may view a specific Venue page by id
-- A user may view a calendar with available dates for a Venue
-- A user with a stud.noroff.no email may register as a customer
-- A registered customer may create a booking at a Venue
-- A registered customer may view their upcoming bookings
-- A user with a stud.noroff.no email may register as a Venue manager
-- A registered Venue manager may create a Venue
-- A registered Venue manager may update a Venue they manage
-- A registered Venue manager may delete a Venue they manage
-- A registered Venue manager may view bookings for a Venue they manage
-- A registered user may login
-- A registered user may update their avatar
-- A registered user may logout
+Access the application through your web browser at http://localhost:3000.
 
 ## Contributing
 
-### Fork the repository.
+Contributions are welcome! To contribute:
 
-### Create a new feature branch:
+1. Fork the repository.
+2. Create your feature branch (git checkout -b feature/your-feature-name).
+3. Commit your changes (git commit -am 'Add some feature').
+4. Push to the branch (git push origin feature/your-feature-name).
+5. Open a pull request for review.
 
-```bash
-git checkout -b feature/YourFeature
-```
+## Contact
 
-### Commit your changes:
+For further inquiries, reach out through:
 
-```bash
-git commit -m 'Add new feature'
-```
-
-### Push the branch:
-
-```bash
-git push origin feature/YourFeature
-```
-
-### Open a Pull Request.
-
-Once you have pushed your changes, go to the repository on GitHub and open a Pull Request. Make sure to provide a clear description of the changes you made and reference any relevant issues.
+[My LinkedIn page](https://www.linkedin.com/in/andreea-bianca-simon-front-end-dev/)
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. You can find the details in the LICENSE file in the repository.
 
-### Instructions to Use
+## Acknowledgments
 
-1. Create a new file named `README.md` in the root of your project directory.
-2. Copy and paste the above Markdown content into the `README.md` file.
-3. Save the file. You can view it in VSCode or any Markdown viewer.
+Special thanks to Noroff for providing the API and supporting documentation, and to all contributors who have helped with feedback and ideas during the development process.
